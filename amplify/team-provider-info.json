@@ -18,7 +18,7 @@
       "function": {
         "PilotReportsCrud": {
           "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
-          "s3Key": "amplify-builds/PilotReportsCrud-496b4156336a302f6e71-build.zip"
+          "s3Key": "amplify-builds/PilotReportsCrud-75516564726c4f72577a-build.zip"
         },
         "PilotPdf": {
           "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
