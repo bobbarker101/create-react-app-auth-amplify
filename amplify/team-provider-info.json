@@ -1,0 +1,30 @@
+{
+  "devp": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-authcra-devp-100337-authRole",
+      "UnauthRoleArn": "arn:aws:iam::187959689053:role/amplify-authcra-devp-100337-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::187959689053:role/amplify-authcra-devp-100337-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-authcra-devp-100337-deployment",
+      "UnauthRoleName": "amplify-authcra-devp-100337-unauthRole",
+      "StackName": "amplify-authcra-devp-100337",
+      "StackId": "arn:aws:cloudformation:us-west-2:187959689053:stack/amplify-authcra-devp-100337/2a645070-2d9f-11ec-bc8f-0a851d6799db",
+      "AmplifyAppId": "d33rzak2a1rwn7"
+    },
+    "categories": {
+      "auth": {
+        "cognitocf0c6096": {}
+      },
+      "function": {
+        "PilotReportsCrud": {
+          "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
+          "s3Key": "amplify-builds/PilotReportsCrud-496b4156336a302f6e71-build.zip"
+        },
+        "PilotPdf": {
+          "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
+          "s3Key": "amplify-builds/PilotPdf-41794b564e4f6a6b686c-build.zip"
+        }
+      }
+    }
+  }
+}
