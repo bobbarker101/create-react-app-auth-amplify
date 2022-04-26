@@ -11,6 +11,9 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import Amplify, { API } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { Authentication } from "./auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   fab,
   faFacebook,
@@ -267,11 +270,14 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter basename="/Pilot/">
-          <ScrollToTop>
-            <Routes />
-          </ScrollToTop>
-        </BrowserRouter>
+          <Authentication>
+            <ToastContainer autoClose={5000} />
+            <BrowserRouter basename="/Pilot/" >
+              <ScrollToTop >
+                <Routes />
+              </ScrollToTop>
+            </BrowserRouter>
+          </Authentication>
       </Provider>
     );
   }

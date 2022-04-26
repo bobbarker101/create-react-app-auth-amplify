@@ -1,5 +1,7 @@
 import ThemeOptions from './ThemeOptions';
+import ReportsOptions from './ReportsOptions';
 
 export default {
-  ThemeOptions
+  ThemeOptions,
+  ReportsOptions
 };

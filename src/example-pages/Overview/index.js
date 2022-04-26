@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageTitle } from 'layout-components';
-import { Grid } from '@material-ui/core';
+import { Grid, List, ListItem } from '@material-ui/core';
 import OverviewPortfolio from '../../dashboard/Overview/OverviewPortfolio';
 import OverviewActivity from '../../dashboard/Overview/OverviewActivity';
 import OverviewNews from '../../dashboard/Overview/OverviewNews';
@@ -21,7 +21,7 @@ export default function Overview() {
   };
   console.log(toggle);
   const [state, changeState] = useState({
-    rates: [],
+    totalPerMonth: [],
     reports: []
   });
   //const names = ['James', 'Paul', 'John', 'George', 'Ringo'];
@@ -39,11 +39,11 @@ export default function Overview() {
   API.get(apiName, path, myInit)
     .then((result) => {
       console.log('result');
-      console.log(result.data);
+      console.log(result);
       //
       if (state.reports.length < 1) {
         changeState((state) => ({
-          rates: [],
+          totalPerMonth: result.totalPerMonth,
           reports: result.data
         }));
       }
@@ -65,7 +65,42 @@ export default function Overview() {
         titleDescription="This page shows an overview of reports.">
         <OverviewPageTitleActions />
       </PageTitle>
-
+      <List
+        component="div"
+        className="w-100 nav-line justify-content-center d-flex nav-line-alt nav-tabs-primary">
+        {Object.keys(state.totalPerMonth).map(function (key, index) {
+          var month = [
+            'unknown',
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+          ][key.substring(0, 1)];
+          return (
+            <ListItem
+              button
+              disableRipple
+              className="px-5 py-4"
+              selected={activeTab === `${state.totalPerMonth[key]}`}
+              onClick={() => {
+                toggle(`${state.totalPerMonth[key]}`);
+              }}>
+              <span className="font-weight-bold text-uppercase">
+                {month + ' ' + key.substring(1, 3)}
+              </span>
+              <div className="divider" />
+            </ListItem>
+          );
+        })}
+      </List>
       <Grid container spacing={6}>
         {Object.keys(state.reports).map(function (obj, index) {
           if (state.reports[obj].length > 0) {

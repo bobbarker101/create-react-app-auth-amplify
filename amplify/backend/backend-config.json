@@ -9,7 +9,8 @@
     "PilotReportsCrud": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": []
     },
     "PilotPdf": {
       "build": true,
