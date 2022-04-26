@@ -1,0 +1,8 @@
+{
+  "lambdaLayers": [
+    {
+      "type": "ExternalLayer",
+      "arn": "arn:aws:lambda:us-west-2:187959689053:layer:moments_lodash:2"
+    }
+  ]
+}
