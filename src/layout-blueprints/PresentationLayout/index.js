@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PresentationLayout = (props) => {
+
   const { children } = props;
 
   return <>{children}</>;

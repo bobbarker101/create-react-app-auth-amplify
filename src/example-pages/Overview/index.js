@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { PageTitle } from 'layout-components';
 import { Grid, List, ListItem } from '@material-ui/core';
-import OverviewPortfolio from '../../dashboard/Overview/OverviewPortfolio';
-import OverviewActivity from '../../dashboard/Overview/OverviewActivity';
-import OverviewNews from '../../dashboard/Overview/OverviewNews';
-import OverviewVerification from '../../dashboard/Overview/OverviewVerification';
-import OverviewWatchlist from '../../dashboard/Overview/OverviewWatchlist';
-import OverviewPriceWatch from '../../dashboard/Overview/OverviewPriceWatch';
-import OverviewWallets from '../../dashboard/Overview/OverviewWallets';
-import OverviewPageTitleActions from '../../dashboard/Overview/OverviewPageTitleActions';
+import OverviewPortfolio from '../../dashboard-components/Overview/OverviewPortfolio';
+import OverviewActivity from '../../dashboard-components/Overview/OverviewActivity';
+import OverviewNews from '../../dashboard-components/Overview/OverviewNews';
+import OverviewVerification from '../../dashboard-components/Overview/OverviewVerification';
+import OverviewWatchlist from '../../dashboard-components/Overview/OverviewWatchlist';
+import OverviewPriceWatch from '../../dashboard-components/Overview/OverviewPriceWatch';
+import OverviewWallets from '../../dashboard-components/Overview/OverviewWallets';
+import OverviewPageTitleActions from '../../dashboard-components/Overview/OverviewPageTitleActions';
 import { API } from 'aws-amplify';
 import aws_exports from '../../aws-exports';
 
@@ -19,7 +19,6 @@ export default function Overview() {
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-  console.log(toggle);
   const [state, changeState] = useState({
     totalPerMonth: [],
     reports: []
@@ -38,8 +37,6 @@ export default function Overview() {
   //const stats = { reports: [], rates: [] };
   API.get(apiName, path, myInit)
     .then((result) => {
-      console.log('result');
-      console.log(result);
       //
       if (state.reports.length < 1) {
         changeState((state) => ({

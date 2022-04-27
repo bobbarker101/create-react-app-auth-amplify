@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setReports, setUser, setKeywords, setSenders, setSubscriptions, setSubscribers} from "../reducers/ReportsOptions";
+import {setReports, setUser, setKeywords, setSenders, setSubscriptions, setSubscribers} from "../reducers/UserOptions";
 import { API } from "aws-amplify/lib-esm/index";
 import { Auth } from "aws-amplify/lib-esm/index";
 import Amplify from "aws-amplify/lib-esm/index";
@@ -32,7 +32,7 @@ class Authentication extends Component {
                 /**
                  * set reports
                  */
-                API.get('MobileHelmV5', '/v5/reports', {
+                API.get('PilotApi', '/pilot/reports', {
                     headers: {
                         'Content-Type': 'application/json',
                         'x-api-key': apiKey
@@ -48,8 +48,8 @@ class Authentication extends Component {
                     });
                 /**
                  * set senders
-                 */
-                API.get('MobileHelmV5', '/v5/senders', {
+                 *
+                API.get('PilotApi', '/pilot/senders', {
                     headers: {
                         'Content-Type': 'application/json',
                         'x-api-key': apiKey
@@ -65,8 +65,8 @@ class Authentication extends Component {
                     });
                 /**
                  * set keywords
-                 */
-                API.get('MobileHelmV5', '/v5/keywords', {
+                 *
+                API.get('PilotApi', '/pilot/keywords', {
                     headers: {
                         'Content-Type': 'application/json',
                         'x-api-key': apiKey
@@ -80,45 +80,8 @@ class Authentication extends Component {
                         console.log(error);
                         return error;
                     });
-                /**
-                 * set subscriptions
-                 */
-                let apiName = 'MobileHelmV5';
-                let path = '/v5/subscriptions';
-                let myInit = {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': "RJnVqR4pjs5OmAIQKYEKG9pB9Iy88pbR7jcifvBE"
-                    }
-                };
-                API.get(apiName, path, myInit)
-                    .then((result) => {
-                       this.props.setSubscriptions(result.data)
+                */
 
-                    })
-                    .catch((error) => {
-                        console.log('ERROR');
-                        console.log(error);
-                        return error;
-                    });
-                /**
-                 * set subscribers
-                 */
-                API.get('MobileHelmV5', '/v5/subscriptions/subscribers/all', {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-api-key': apiKey
-                    }
-                })
-                    .then((result) => {
-                        this.props.setSubscribers(result)
-
-                    })
-                    .catch((error) => {
-                        console.log('ERROR');
-                        console.log(error);
-                        return error;
-                    });
             })
             .catch((error) => {
                 console.error(error);

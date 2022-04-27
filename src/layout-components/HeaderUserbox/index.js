@@ -12,6 +12,12 @@ import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 
 import { withStyles } from '@material-ui/core/styles';
+import {setReports, setUser} from "../../reducers/UserOptions";
+import {setSidebarToggleMobile} from "../../reducers/ThemeOptions";
+import {connect} from "react-redux";
+import { Auth } from "aws-amplify/lib-esm/index";
+import aws_exports from "../../aws-exports";
+Auth.configure(aws_exports);
 
 const StyledBadge = withStyles({
   badge: {
@@ -41,17 +47,33 @@ const StyledBadge = withStyles({
     }
   }
 })(Badge);
+var checkuser = true;
+var checkreports = true;
+//comment
 
-const HeaderUserbox = () => {
+const HeaderUserbox = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
-
+    const [user, setUser] = useState({});
+    const [reports, setReports] = useState({});
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
+    if(props.user.attributes && checkuser){
+        setUser(props.user);
+        checkuser = false
+    }
+    if(props.reports.count && checkreports){
+        props.reports.data.sort(function (a, b) {
+            var dateA = new Date(a.start_date), dateB = new Date(b.start_date)
+            return dateA - dateB
+        });
+        setReports(props.reports);
+        checkreports = false
+    }
+
 
   return (
     <>
@@ -79,7 +101,7 @@ const HeaderUserbox = () => {
           <span className="text-success">
             <small>Account verified</small>
           </span>
-          <div className="font-weight-bold">Satoshi Nakamoto</div>
+          <div className="font-weight-bold">{user.attributes ? (user.attributes.name ? user.attributes.name : user.attributes["custom:firstName"] + " " + user.attributes["custom:lastName"]) : "User"  }</div>
         </div>
         <span className="pl-1 pl-xl-3">
           <FontAwesomeIcon icon={['fas', 'angle-down']} className="opacity-5" />
@@ -107,9 +129,9 @@ const HeaderUserbox = () => {
             </div>
             <div>
               <h6 className="font-weight-bold mb-1 text-black">
-                Satoshi Nakamoto
+                 {user.username ? user.username : "User"  }
               </h6>
-              <p className="text-black-50 mb-0">satoshi.na@example.com</p>
+              <p className="text-black-50 mb-0">{props.user.email}</p>
             </div>
           </div>
           <div className="divider" />
@@ -120,22 +142,22 @@ const HeaderUserbox = () => {
               <span className="pl-1">
                 <CountUp
                   start={0}
-                  end={458.695}
+                  end={reports.data ? reports.data[reports.data.length-1].total : 0}
                   duration={6}
                   separator=""
                   delay={1}
-                  decimals={3}
-                  decimal=","
                   prefix=""
                   suffix=""
                 />
                 <small>
-                  <sup>.65</sup>
+                  <sup>
+                      .{reports.data ? (reports.data[reports.data.length-1].total.toString().split(".")[1] ? (reports.data[reports.data.length-1].total.toString().split(".")[1].length<2 ? 0 : '')  : '0') : '0'}
+                  </sup>
                 </small>
               </span>
             </div>
             <small className="text-center font-weight-bold opacity-6 text-uppercase">
-              Total balance
+              Last Report Balance
             </small>
           </div>
           <div className="divider" />
@@ -181,7 +203,7 @@ const HeaderUserbox = () => {
               component="a"
               button
               href="#/"
-              onClick={(e) => e.preventDefault()}>
+              onClick={(e) => Auth.signOut().catch(err => console.log(err))}>
               <div className="mr-2">
                 <ExitToAppTwoToneIcon />
               </div>
@@ -194,4 +216,10 @@ const HeaderUserbox = () => {
   );
 };
 
-export default HeaderUserbox;
+const mapStateToProps = (state) => ({
+    user: state.UserOptions.user,
+    reports: state.UserOptions.reports
+});
+
+
+export default connect(mapStateToProps, null)(HeaderUserbox);

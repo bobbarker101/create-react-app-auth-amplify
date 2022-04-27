@@ -46,21 +46,7 @@ const SidebarMenu = (props) => {
             <span>Navigation</span>
           </div>
           <ul>
-            <li>
-              <NavLink
-                onClick={toggleSidebarMobile}
-                activeClassName="active"
-                className="nav-link-simple"
-                to="/Homepage">
-                <span className="sidebar-icon">
-                  <EmojiEventsTwoToneIcon />
-                </span>
-                Homepage
-                <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
-                  <ChevronRightTwoToneIcon />
-                </span>
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 onClick={toggleSidebarMobile}
@@ -77,75 +63,30 @@ const SidebarMenu = (props) => {
               </NavLink>
             </li>
             <li>
+                <NavLink
+                    onClick={toggleSidebarMobile}
+                    activeClassName="active"
+                    className="nav-link-simple"
+                    to="/Keywords">
+              <span className="sidebar-icon">
+                <FilterListTwoToneIcon />
+              </span>
+                    Keywords
+                    <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
+                <ChevronRightTwoToneIcon />
+              </span>
+                </NavLink>
+            </li>
+            <li>
               <NavLink
                 onClick={toggleSidebarMobile}
                 activeClassName="active"
                 className="nav-link-simple"
-                to="/Accounts">
+                to="/SendMessage">
                 <span className="sidebar-icon">
                   <PeopleAltTwoToneIcon />
                 </span>
-                Accounts
-                <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
-                  <ChevronRightTwoToneIcon />
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={toggleSidebarMobile}
-                activeClassName="active"
-                className="nav-link-simple"
-                to="/Wallets">
-                <span className="sidebar-icon">
-                  <BusinessCenterTwoToneIcon />
-                </span>
-                Wallets
-                <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
-                  <ChevronRightTwoToneIcon />
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={toggleSidebarMobile}
-                activeClassName="active"
-                className="nav-link-simple"
-                to="/BuySell">
-                <span className="sidebar-icon">
-                  <AttachMoneyTwoToneIcon />
-                </span>
-                Buy / Sell
-                <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
-                  <ChevronRightTwoToneIcon />
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={toggleSidebarMobile}
-                activeClassName="active"
-                className="nav-link-simple"
-                to="/Transactions">
-                <span className="sidebar-icon">
-                  <FilterListTwoToneIcon />
-                </span>
-                Transactions
-                <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
-                  <ChevronRightTwoToneIcon />
-                </span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={toggleSidebarMobile}
-                activeClassName="active"
-                className="nav-link-simple"
-                to="/Profile">
-                <span className="sidebar-icon">
-                  <VerifiedUserTwoToneIcon />
-                </span>
-                Profile
+                Send Message
                 <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
                   <ChevronRightTwoToneIcon />
                 </span>
@@ -165,53 +106,6 @@ const SidebarMenu = (props) => {
                   <ChevronRightTwoToneIcon />
                 </span>
               </NavLink>
-            </li>
-          </ul>
-          <div className="sidebar-header">
-            <span>Others</span>
-          </div>
-          <ul>
-            <li>
-              <a
-                href="#/"
-                onClick={togglePages}
-                className={clsx({ active: pagesOpen })}>
-                <span className="sidebar-icon">
-                  <ViewColumnTwoToneIcon />
-                </span>
-                <span className="sidebar-item-label">User Pages</span>
-                <span className="sidebar-icon-indicator">
-                  <ChevronRightTwoToneIcon />
-                </span>
-              </a>
-              <Collapse in={pagesOpen}>
-                <ul>
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/PageLoginCover">
-                      Login
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      onClick={toggleSidebarMobile}
-                      to="/PageRegisterCover">
-                      Register
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      onClick={toggleSidebarMobile}
-                      to="/PageRecoverCover">
-                      Recover Password
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/PageError404">
-                      Error 404
-                    </NavLink>
-                  </li>
-                </ul>
-              </Collapse>
             </li>
           </ul>
         </div>

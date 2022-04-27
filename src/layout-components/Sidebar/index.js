@@ -15,14 +15,16 @@ const Sidebar = (props) => {
   const toggleSidebarMobile = () => {
     setSidebarToggleMobile(!sidebarToggleMobile);
   };
-
   const {
     sidebarStyle,
     sidebarShadow,
     sidebarFooter,
     sidebarToggleMobile,
-    setSidebarToggleMobile
+    setSidebarToggleMobile,
+      user,
+      reports
   } = props;
+
   return (
     <>
       <div
@@ -49,7 +51,9 @@ const mapStateToProps = (state) => ({
   sidebarShadow: state.ThemeOptions.sidebarShadow,
   sidebarFooter: state.ThemeOptions.sidebarFooter,
   sidebarStyle: state.ThemeOptions.sidebarStyle,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
+  user: state.UserOptions.user,
+  reports: state.UserOptions.reports
 });
 
 const mapDispatchToProps = (dispatch) => ({

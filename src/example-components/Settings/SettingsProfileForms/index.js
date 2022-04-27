@@ -57,31 +57,7 @@ export default function LivePreviewExample() {
                 toggle('1');
               }}>
               <span className="font-weight-bold font-size-sm text-uppercase">
-                Personal details
-              </span>
-              <div className="divider" />
-            </ListItem>
-            <ListItem
-              button
-              className="p-4 font-size-md rounded-0"
-              selected={activeTab === '2'}
-              onClick={() => {
-                toggle('2');
-              }}>
-              <span className="font-weight-bold font-size-sm text-uppercase">
-                Settings
-              </span>
-              <div className="divider" />
-            </ListItem>
-            <ListItem
-              button
-              className="p-4 font-size-md rounded-0"
-              selected={activeTab === '3'}
-              onClick={() => {
-                toggle('3');
-              }}>
-              <span className="font-weight-bold font-size-sm text-uppercase">
-                Social Accounts
+                Send Message To Group
               </span>
               <div className="divider" />
             </ListItem>
@@ -91,90 +67,6 @@ export default function LivePreviewExample() {
           <div
             className={clsx('tab-item-wrapper', { active: activeTab === '1' })}
             index={1}>
-            <Container>
-              <div className="text-uppercase font-weight-bold text-primary pt-4 font-size-sm">
-                General
-              </div>
-              <div className="py-4">
-                <Grid container spacing={6}>
-                  <Grid item md={6}>
-                    <div className="mb-4">
-                      <label className="font-weight-bold mb-2">
-                        First Name
-                      </label>
-                      <TextField
-                        variant="outlined"
-                        fullWidth
-                        placeholder="First name..."
-                      />
-                    </div>
-                    <label className="font-weight-bold mb-2">Birthday</label>
-                    <Grid container spacing={6}>
-                      <Grid item md={4}>
-                        <div className="mb-4">
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            placeholder="Day..."
-                          />
-                        </div>
-                      </Grid>
-                      <Grid item md={4}>
-                        <div className="mb-4">
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            placeholder="Month..."
-                          />
-                        </div>
-                      </Grid>
-                      <Grid item md={4}>
-                        <div className="mb-4">
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            placeholder="Year..."
-                          />
-                        </div>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item md={6}>
-                    <div className="mb-4">
-                      <label className="font-weight-bold mb-2">Last Name</label>
-                      <TextField
-                        variant="outlined"
-                        fullWidth
-                        placeholder="Last name..."
-                      />
-                    </div>
-                    <label className="font-weight-bold mb-2">
-                      Mobile phone
-                    </label>
-                    <Grid container spacing={6}>
-                      <Grid item md={4}>
-                        <div className="mb-4">
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            placeholder="Area..."
-                          />
-                        </div>
-                      </Grid>
-                      <Grid item md={8}>
-                        <div className="mb-4">
-                          <TextField
-                            variant="outlined"
-                            fullWidth
-                            placeholder="Number..."
-                          />
-                        </div>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </div>
-            </Container>
             <div className="divider mb-4" />
             <Container>
               <div className="text-uppercase font-weight-bold text-primary font-size-sm pb-4">
@@ -183,17 +75,7 @@ export default function LivePreviewExample() {
               <Grid container spacing={6}>
                 <Grid item md={4}>
                   <div className="mb-4">
-                    <label className="font-weight-bold mb-2">Postal Code</label>
-                    <TextField
-                      variant="outlined"
-                      fullWidth
-                      placeholder="Postal code..."
-                    />
-                  </div>
-                </Grid>
-                <Grid item md={4}>
-                  <div className="mb-4">
-                    <label className="font-weight-bold mb-2">Country</label>
+                    <label className="font-weight-bold mb-2">Group</label>
                     <Select
                       fullWidth
                       variant="outlined"
@@ -222,19 +104,9 @@ export default function LivePreviewExample() {
                     </Select>
                   </div>
                 </Grid>
-                <Grid item md={4}>
-                  <div className="mb-4">
-                    <label className="font-weight-bold mb-2">City</label>
-                    <TextField
-                      variant="outlined"
-                      fullWidth
-                      placeholder="City..."
-                    />
-                  </div>
-                </Grid>
               </Grid>
               <div className="mb-4">
-                <label className="font-weight-bold mb-2">Address</label>
+                <label className="font-weight-bold mb-2">Message</label>
                 <TextField
                   multiline
                   variant="outlined"
@@ -247,7 +119,7 @@ export default function LivePreviewExample() {
             <Container className="d-flex align-items-center justify-content-end">
               <div className="py-4">
                 <Button size="large" className="btn-success font-weight-bold">
-                  Save details
+                  Send Message
                 </Button>
               </div>
             </Container>

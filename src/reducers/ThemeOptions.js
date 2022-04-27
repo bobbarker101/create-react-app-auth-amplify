@@ -1,3 +1,4 @@
+
 // Sidebar
 export const SET_SIDEBAR_TOGGLE_MOBILE =
   'THEME_OPTIONS/SET_SIDEBAR_TOGGLE_MOBILE';
@@ -176,7 +177,10 @@ export default function reducer(
   },
   action
 ) {
+    console.log("switch2");
+    console.log(action);
   switch (action.type) {
+
     // Sidebar
 
     case SET_SIDEBAR_SHADOW:

@@ -17,7 +17,8 @@ import {
 
 // Example Pages
 
-import Overview from './example-pages/Overview';
+import Overview from './dashboard-pages/Overview';
+import Keywords from './dashboard-pages/Keywords';
 import Accounts from './example-pages/Accounts';
 import Wallets from './example-pages/Wallets';
 import BuySell from './example-pages/BuySell';
@@ -28,11 +29,25 @@ import PageLoginCover from './example-pages/PageLoginCover';
 import PageRegisterCover from './example-pages/PageRegisterCover';
 import PageRecoverCover from './example-pages/PageRecoverCover';
 import PageError404 from './example-pages/PageError404';
-
+import SendMessage from './dashboard-pages/SendMessage';
+import { Auth } from 'aws-amplify';
+import aws_exports from './aws-exports';
+Auth.configure(aws_exports);
 //const Homepage = lazy(() => import('./example-pages/Homepage'));
 
-const Routes = () => {
+const Routes = (auth) => {
   const location = useLocation();
+   // import { Auth } from 'aws-amplify';
+  //const user = Auth.currentAuthenticatedUser();
+
+
+
+    //const { user, setUser } = {};
+
+
+
+
+
 
   const pageVariants = {
     initial: {
@@ -54,11 +69,14 @@ const Routes = () => {
 
   const SuspenseLoading = () => {
     const [show, setShow] = useState(false);
+
     useEffect(() => {
-      let timeout = setTimeout(() => setShow(true), 300);
-      return () => {
-        clearTimeout(timeout);
-      };
+      let timeout = setTimeout(() => setShow(true), 3000);
+
+
+          return () => {
+              clearTimeout(timeout);
+          };
     }, []);
 
     return (
@@ -89,15 +107,18 @@ const Routes = () => {
       </>
     );
   };
+
   return (
     <ThemeProvider theme={MuiTheme}>
       <AnimatePresence>
         <Suspense fallback={<SuspenseLoading />}>
-          <Switch>
+          <Switch >
             <Redirect exact from="/" to="/Overview" />
             <Route
               path={[
-                '/Overview',
+                  '/Overview',
+                  '/SendMessage',
+                  '/Keywords',
                 '/Accounts',
                 '/Wallets',
                 '/BuySell',
@@ -106,7 +127,7 @@ const Routes = () => {
                 '/Settings'
               ]}>
               <LeftSidebar>
-                <Switch location={location} key={location.pathname}>
+                <Switch location={location} key={location.pathname}  >
                   <motion.div
                     initial="initial"
                     animate="in"
@@ -114,6 +135,8 @@ const Routes = () => {
                     variants={pageVariants}
                     transition={pageTransition}>
                     <Route path="/Overview" component={Overview} />
+                      <Route path="/Keywords" component={Keywords} />
+                      <Route path="/SendMessage" component={SendMessage} />
                     <Route path="/Accounts" component={Accounts} />
                     <Route path="/Wallets" component={Wallets} />
                     <Route path="/BuySell" component={BuySell} />
@@ -133,7 +156,7 @@ const Routes = () => {
                 '/PageError404'
               ]}>
               <MinimalLayout>
-                <Switch location={location} key={location.pathname}>
+                <Switch location={location} key={location.pathname} >
                   <motion.div
                     initial="initial"
                     animate="in"

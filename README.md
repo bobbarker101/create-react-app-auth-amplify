@@ -1,45 +1,136 @@
-# Create-react-app with AWS Amplify Auth 
+ <p align="center">
+    <a href="https://uifort.com" title="UiFort.com">
+        <img width=256px height=256px src="https://demo.uifort.com/github-static-assets/ui-fort-logo.png" alt="UiFort">
+    </a>
+</p>
+<h1 align="center">
+    <a href="https://material-ui.com/store/items/bamburgh-react-admin-dashboard-pro">Bamburgh React Crypto Application with Material-UI PRO</a>
+    <br>
+    <a href="https://twitter.com/intent/tweet?url=https://material-ui.com/store/items/bamburgh-react-admin-dashboard-pro&text=All components from the General dashboard template can be used in the individual applications pages, without modifications.">
+        <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" />
+    </a>
+    <a href="https://twitter.com/uifort1">
+        <img src="https://img.shields.io/twitter/follow/uifort1.svg?style=social&label=Follow" />
+    </a>
+</h1>
+<div align="center">
 
-This auth starter implements withAuthenticator HOC to provide a basic authentication flow for signing up signing in users as well as protected client side routing using AWS Amplify. Auth features: User sign up, User sign in, Multi-factor Authentication, User sign-out.
+  ![version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+  [![GitHub Issues open](https://img.shields.io/github/issues/uifort/bamburgh-react-crypto-application-pro.svg)](https://github.com/uifort/bamburgh-react-crypto-application-pro/issues)
+  [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/uifort/bamburgh-react-crypto-application-pro.svg?maxAge=2592000)](https://github.com/uifort/bamburgh-react-crypto-application-pro/issues?q=is%3Aissue+is%3Aclosed)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/uifort/bamburgh-react-crypto-application-pro.svg)](https://github.com/uifort/bamburgh-react-crypto-application-pro/pulls)
+  [![License](https://img.shields.io/badge/license-UiFort-blue.svg)](/LICENSE)
 
-[View Demo](https://master.d2ka7y7551sk8n.amplifyapp.com/)
+</div>
 
-![Amplify Auth](src/images/auth.gif)
+<h5 align="center">Fully coded, perfectly responsive on all screen sizes. Start working on your project today!</h5>
 
-## Deploy with the AWS Amplify Console
+<h4 align="center">Easy to customize application inspired by the cryptocurrency products niche. Start working on your product today with this amazing, clean and feature-packed niche template.</h4>
 
-The AWS Amplify Console provides hosting for fullstack serverless web apps. [Learn more](https://console.amplify.aws). Deploy this app to your AWS account with a single click:
+<br />
 
-[![amplifybutton](https://oneclick.amplifyapp.com/button.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/aws-samples/create-react-app-auth-amplify)
+<img src="https://demo.uifort.com/github-static-assets/bamburgh-react-crypto-application-pro.jpg" alt="Bamburgh React Crypto Application with Material-UI PRO">
 
-The Amplify Console will fork this repo in your GitHub account, and then build and deploy your backend and frontend in a single workflow. Your app will be available at `https://master.appid.amplifyapp.com`.
+---
 
-## Run locally with the Amplify CLI
+<h2>
+    Online Documentation
+</h2>
 
-1. Clone the repo that was just forked in your account
+<p>For each of our products we create an extensive documentation so that developers can easily navigate, understand and use all the features that, in this case, Bamburgh React Crypto Application with Material-UI PRO has to offer!</p>
+<p>To view the available online documentation files please visit the following link:</p>
+<b>
+    <a href="https://docs.uifort.com/bamburgh-react-crypto-application-pro-docs" title="Click to view the online documentation for Bamburgh React Crypto Application with Material-UI PRO">
+        Bamburgh React Crypto Application with Material-UI PRO Documentation
+    </a>
+</b>
 
-  ```
-  git clone git@github.com:<username>/create-react-app-auth-amplify.git
+---
 
-  cd create-react-app-auth-amplify && npm install
-  ```
+<h2>
+    Live Preview
+</h2>
 
-2. Import the backend environment deployed by the Amplify Console to your repo (the `amplify/team-provider.json` file contains information on all backend environments in your AWS account). The GIF below shows how you to copy the `amplify env import` command from the Amplify Console. 
+<p>You can view a live preview instance here:</p>
+<b>
+    <a href="https://demo.uifort.com/bamburgh-react-crypto-application-pro-demo" title="Click to view the live preview for Bamburgh React Crypto Application with Material-UI PRO">
+        Bamburgh React Crypto Application with Material-UI PRO Live Preview
+    </a>
+</b>
 
-<img src="https://github.com/aws-samples/create-react-app-auth-amplify/blob/master/src/images/import-backend.gif" width="800"/>
+---
 
-3. Paste this command into your terminal at the root of your repo. You should see the `amplify/team-provider.json` updated with a backend named `amplify`.
+<h2>
+    FREE Version
+</h2>
 
-  ```
-  amplify pull
-  ```
+<p>bamburgh Admin Dashboard Template also comes with a slimmed down, FREE version. This contains a limited set of components and features.</p>
+<p>bamburgh Admin Dashboard Template FREE is open source and was released under an <b>MIT license</b>!</p>
+<p>
+    You can read more details about the FREE version by following the links bellow:
+</p>
+<b>
+    <a href="https://material-ui.com/store/items/bamburgh-react-admin-dashboard-pro/bamburgh-react-crypto-application-free" title="Click to view Bamburgh React Crypto Application with Material-UI PRO Admin Dashboard Template FREE presentation page">
+        Bamburgh React Crypto Application with Material-UI PRO FREE Presentation Page
+    </a>
+    <br><br>
+    <a href="https://demo.uifort.com/bamburgh-react-crypto-application-free-demo" title="Click to view Bamburgh React Crypto Application with Material-UI PRO Admin Dashboard Template FREE live preview">
+        Bamburgh React Crypto Application with Material-UI PRO FREE Live Preview
+    </a>
+    <br><br>
+    <a href="https://docs.uifort.com/bamburgh-react-crypto-application-free-docs" title="Click to view Bamburgh React Crypto Application with Material-UI PRO Admin Dashboard Template FREE documentation">
+        Bamburgh React Crypto Application with Material-UI PRO FREE Documentation
+    </a>
+</b>
 
-![img](src/images/amplify-pull.mov)
+---
 
-4. Run locally
+<h2>
+    Browser Support
+</h2>
+<p>
+    We're supporting the last two versions of the following browsers:
+</p>
+<p>
+<img src="https://demo.uifort.com/github-assets/browsers/chrome.png" width="64" height="64"> <img src="https://demo.uifort.com/github-assets/browsers/firefox.png" width="64" height="64"> <img src="https://demo.uifort.com/github-assets/browsers/edge.png" width="64" height="64"> <img src="https://demo.uifort.com/github-assets/browsers/safari.png" width="64" height="64"> <img src="https://demo.uifort.com/github-assets/browsers/opera.png" width="64" height="64">
+</p>
 
-  ```
-  npm start
-  ```
+---
 
-Checkout Nader Dabit's [Complete Guide to User Authentication](https://dev.to/dabit3/the-complete-guide-to-user-authentication-with-the-amplify-framework-2inh).
+<h2>
+    Support or Questions
+</h2>
+<p>
+    You can contact us either via our contact page ([UiFort Contact](https://uifort.com/contact-us)) or you could chat with us using the integrated chat widget from our live previews or homepage.
+</p>
+<b>
+    <a href="https://uifort.com/support-center" title="Click to view the UiFort Support Center">
+        UiFort Support Center
+    </a>
+</b>
+---
+
+<h2>
+    Issue Reporting
+</h2>
+
+<p>We use GitHub Issues as the official bug tracker for all our products. Here are some advices for anyone who wants to report an issue:</p>
+
+1. Make sure that you are using the latest version of this product. To do that you could check the [CHANGELOG](./CHANGELOG.md).
+2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
+3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+
+---
+
+### Social Media
+
+<p>Follow us on any of our social media accounts to find out when we release new products or updates.</p>
+<p>We send out discount coupons from time to time to our subscribers.</p>
+<p><b>Facebook: </b><a href="https://www.facebook.com/UiFort">https:&#x2F;&#x2F;www.facebook.com&#x2F;UiFort</a></p>
+<p><b>Twitter: </b><a href="https://twitter.com/uifort1">https:&#x2F;&#x2F;twitter.com&#x2F;uifort1</a></p>
+<p><b>Instagram: </b><a href="https://www.instagram.com/uifort1">https:&#x2F;&#x2F;www.instagram.com&#x2F;uifort1</a></p>
+<p><b>Discord: </b><a href="https://discord.gg/mddFBQX">https:&#x2F;&#x2F;discord.gg&#x2F;mddFBQX</a></p>
+<p><b>Dribbble: </b><a href="https://dribbble.com/UiFort">https:&#x2F;&#x2F;dribbble.com&#x2F;UiFort</a></p>
+<p><b>Github: </b><a href="https://github.com/uifort">https:&#x2F;&#x2F;github.com&#x2F;uifort</a></p>
+

@@ -15,19 +15,30 @@ import {
 
 import projectLogo from '../../assets/images/react.svg';
 
+import Amplify, { Auth } from 'aws-amplify';
+import aws_exports from '../../aws-exports';
+
+Amplify.configure(aws_exports);
+Auth.configure(aws_exports);
+
 const SidebarHeader = (props) => {
+
+
   const toggleSidebarMobile = () => {
     setSidebarToggleMobile(!sidebarToggleMobile);
   };
   const toggleSidebar = () => {
+
     setSidebarToggle(!sidebarToggle);
+
   };
   const {
     sidebarToggleMobile,
     setSidebarToggleMobile,
 
     sidebarToggle,
-    setSidebarToggle
+    setSidebarToggle,
+      user
   } = props;
 
   return (
@@ -45,9 +56,9 @@ const SidebarHeader = (props) => {
               />
             </div>
             <div className="app-sidebar-logo--text">
-              <span>Crypto</span>
+              <span>Dashboard</span>
 
-              <b>bamburgh</b>
+              <b>Mobile Helms</b>
             </div>
           </NavLink>
         </div>
@@ -82,12 +93,15 @@ const SidebarHeader = (props) => {
 
 const mapStateToProps = (state) => ({
   sidebarToggle: state.ThemeOptions.sidebarToggle,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
+    user: state.UserOptions.user,
+    reports: state.UserOptions.reports
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setSidebarToggle: (enable) => dispatch(setSidebarToggle(enable)),
-  setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable))
-});
-
+const mapDispatchToProps = (dispatch) => {
+    return ({
+        setSidebarToggle: (enable) => dispatch(setSidebarToggle(enable)),
+        setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable))
+    });
+}
 export default connect(mapStateToProps, mapDispatchToProps)(SidebarHeader);

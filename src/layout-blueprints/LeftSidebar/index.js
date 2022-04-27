@@ -5,8 +5,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Sidebar, Header, Footer } from '../../layout-components';
-
+import { Auth } from 'aws-amplify';
+import { setUser } from '../../reducers/UserOptions';
+import aws_exports from '../../aws-exports';
+import {API} from "aws-amplify/lib-esm/index";
+import {setSidebarToggleMobile} from "../../reducers/ThemeOptions";
+API.configure(aws_exports);
+var userlookedup = false;
 const LeftSidebar = (props) => {
+
   const {
     children,
     sidebarToggle,
@@ -16,7 +23,7 @@ const LeftSidebar = (props) => {
     headerSearchHover,
     headerDrawerToggle,
     footerFixed,
-    contentBackground
+    contentBackground,
   } = props;
 
   return (
@@ -52,17 +59,24 @@ LeftSidebar.propTypes = {
   children: PropTypes.node
 };
 
-const mapStateToProps = (state) => ({
-  sidebarToggle: state.ThemeOptions.sidebarToggle,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
-  sidebarFixed: state.ThemeOptions.sidebarFixed,
-  headerFixed: state.ThemeOptions.headerFixed,
-  headerSearchHover: state.ThemeOptions.headerSearchHover,
-  headerDrawerToggle: state.ThemeOptions.headerDrawerToggle,
+const mapStateToProps = (state) => {
 
-  footerFixed: state.ThemeOptions.footerFixed,
+    return ({
+        sidebarToggle: state.ThemeOptions.sidebarToggle,
+        sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
+        sidebarFixed: state.ThemeOptions.sidebarFixed,
+        headerFixed: state.ThemeOptions.headerFixed,
+        headerSearchHover: state.ThemeOptions.headerSearchHover,
+        headerDrawerToggle: state.ThemeOptions.headerDrawerToggle,
 
-  contentBackground: state.ThemeOptions.contentBackground
+        footerFixed: state.ThemeOptions.footerFixed,
+
+        contentBackground: state.ThemeOptions.contentBackground,
+        user: state.UserOptions.user
+    })
+}
+const mapDispatchToProps = (dispatch) => ({
+    setUser: (user) => dispatch(setUser(user))
 });
 
-export default connect(mapStateToProps)(LeftSidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(LeftSidebar);

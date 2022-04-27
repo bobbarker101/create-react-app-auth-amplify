@@ -8,12 +8,14 @@ import './assets/base.scss';
 // import logo from './logo.svg';
 import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import Amplify, { API } from 'aws-amplify';
+import Amplify from 'aws-amplify';
+//import { Auth } from 'aws-amplify';
+import { API } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { library } from '@fortawesome/fontawesome-svg-core';
+
 import { Authentication } from "./auth";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import {
   fab,
   faFacebook,
@@ -262,17 +264,25 @@ library.add(
   faSignOutAlt,
   faLink
 );
+import { setUser } from './reducers/UserOptions';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 Amplify.configure(aws_exports);
 API.configure(aws_exports);
-const store = configureStore();
+//Auth.configure(aws_exports);
+//setUser({username: "zach"});
 
+
+
+const store = configureStore();
 class App extends Component {
+
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={store} >
           <Authentication>
-            <ToastContainer autoClose={5000} />
-            <BrowserRouter basename="/Pilot/" >
+              <ToastContainer autoClose={5000} />
+            <BrowserRouter basename="/" >
               <ScrollToTop >
                 <Routes />
               </ScrollToTop>
