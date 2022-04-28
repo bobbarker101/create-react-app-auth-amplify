@@ -23,6 +23,14 @@
         "PilotPdf": {
           "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
           "s3Key": "amplify-builds/PilotPdf-41794b564e4f6a6b686c-build.zip"
+        },
+        "PilotKeywordsCrud": {
+          "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
+          "s3Key": "amplify-builds/PilotKeywordsCrud-504b38526232484b322f-build.zip"
+        },
+        "PilotSendersCrud": {
+          "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
+          "s3Key": "amplify-builds/PilotSendersCrud-51653330515156513344-build.zip"
         }
       }
     }

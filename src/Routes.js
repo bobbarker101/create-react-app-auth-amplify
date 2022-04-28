@@ -19,35 +19,13 @@ import {
 
 import Overview from './dashboard-pages/Overview';
 import Keywords from './dashboard-pages/Keywords';
-import Accounts from './example-pages/Accounts';
-import Wallets from './example-pages/Wallets';
-import BuySell from './example-pages/BuySell';
-import Transactions from './example-pages/Transactions';
-import Profile from './example-pages/Profile';
-import Settings from './example-pages/Settings';
-import PageLoginCover from './example-pages/PageLoginCover';
-import PageRegisterCover from './example-pages/PageRegisterCover';
-import PageRecoverCover from './example-pages/PageRecoverCover';
-import PageError404 from './example-pages/PageError404';
+import PageError404 from './dashboard-pages/PageError404';
 import SendMessage from './dashboard-pages/SendMessage';
-import { Auth } from 'aws-amplify';
-import aws_exports from './aws-exports';
-Auth.configure(aws_exports);
+import Senders from './dashboard-pages/Senders';
 //const Homepage = lazy(() => import('./example-pages/Homepage'));
 
 const Routes = (auth) => {
   const location = useLocation();
-   // import { Auth } from 'aws-amplify';
-  //const user = Auth.currentAuthenticatedUser();
-
-
-
-    //const { user, setUser } = {};
-
-
-
-
-
 
   const pageVariants = {
     initial: {
@@ -119,12 +97,7 @@ const Routes = (auth) => {
                   '/Overview',
                   '/SendMessage',
                   '/Keywords',
-                '/Accounts',
-                '/Wallets',
-                '/BuySell',
-                '/Transactions',
-                '/Profile',
-                '/Settings'
+                  '/Senders',
               ]}>
               <LeftSidebar>
                 <Switch location={location} key={location.pathname}  >
@@ -137,12 +110,7 @@ const Routes = (auth) => {
                     <Route path="/Overview" component={Overview} />
                       <Route path="/Keywords" component={Keywords} />
                       <Route path="/SendMessage" component={SendMessage} />
-                    <Route path="/Accounts" component={Accounts} />
-                    <Route path="/Wallets" component={Wallets} />
-                    <Route path="/BuySell" component={BuySell} />
-                    <Route path="/Transactions" component={Transactions} />
-                    <Route path="/Profile" component={Profile} />
-                    <Route path="/Settings" component={Settings} />
+                      <Route path="/Senders" component={Senders} />
                   </motion.div>
                 </Switch>
               </LeftSidebar>
@@ -150,9 +118,6 @@ const Routes = (auth) => {
 
             <Route
               path={[
-                '/PageLoginCover',
-                '/PageRegisterCover',
-                '/PageRecoverCover',
                 '/PageError404'
               ]}>
               <MinimalLayout>
@@ -163,15 +128,6 @@ const Routes = (auth) => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route path="/PageLoginCover" component={PageLoginCover} />
-                    <Route
-                      path="/PageRegisterCover"
-                      component={PageRegisterCover}
-                    />
-                    <Route
-                      path="/PageRecoverCover"
-                      component={PageRecoverCover}
-                    />
                     <Route path="/PageError404" component={PageError404} />
                   </motion.div>
                 </Switch>

@@ -9,30 +9,18 @@ import { setSidebarToggleMobile } from '../../reducers/ThemeOptions';
 import HeaderUserbox from '../../layout-components/HeaderUserbox';
 import HeaderSearch from '../../layout-components/HeaderSearch';
 import HeaderWidget from '../../layout-components/HeaderWidget';
-import {setReports, setUser} from '../../reducers/UserOptions';
-import { Auth } from "aws-amplify/lib-esm/index";
-import { API } from "aws-amplify/lib-esm/index";
-import aws_exports from "../../aws-exports";
-API.configure(aws_exports);
-var userlookedup = false;
-
-
 
 const Header = (props) => {
-
   const {
     headerShadow,
     headerBgTransparent,
     sidebarToggleMobile,
-    setSidebarToggleMobile,
-    user,
-      reports
+    setSidebarToggleMobile
   } = props;
 
   const toggleSidebarMobile = () => {
     setSidebarToggleMobile(!sidebarToggleMobile);
   };
-
 
   return (
     <>
@@ -56,7 +44,6 @@ const Header = (props) => {
           <HeaderWidget />
         </div>
         <div className="app-header--pane">
-
           <HeaderUserbox />
         </div>
       </div>
@@ -67,15 +54,11 @@ const Header = (props) => {
 const mapStateToProps = (state) => ({
   headerShadow: state.ThemeOptions.headerShadow,
   headerBgTransparent: state.ThemeOptions.headerBgTransparent,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
-    user: state.UserOptions.user,
-    reports: state.UserOptions.reports
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable)),
-    setUser: (user) => dispatch(setUser(user)),
-    setReports: (reports) => dispatch(setReports(reports))
+  setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

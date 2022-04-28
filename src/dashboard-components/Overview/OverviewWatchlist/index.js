@@ -18,12 +18,7 @@ const OverviewWatchList = (props) => {
   console.log(useSelector(state => state.UserOptions.user));
     const { reports, user, senders, keywords } = useSelector(state => state.UserOptions);
 
-  if(reports.data){
-      reports.data = reports.data.sort(function (a, b) {
-          var dateA = new Date(a.start_date), dateB = new Date(b.start_date)
-          return dateA - dateB
-      });
-  }
+
 
 let months = [
     'January',

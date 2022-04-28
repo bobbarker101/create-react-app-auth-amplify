@@ -35,3 +35,4 @@ export { default as PageRecoverCover1 } from './PageRecoverCover1';
 export { default as PageError4041 } from './PageError4041';
 export { default as SendMessageProfileForms } from './SendMessageProfileForms';
 export { default as SendMessagePageTitleActions } from './SendMessagePageTitleActions';
+export { default as KeywordsTable } from './KeywordsTable';

@@ -46,7 +46,6 @@ const SidebarMenu = (props) => {
             <span>Navigation</span>
           </div>
           <ul>
-
             <li>
               <NavLink
                 onClick={toggleSidebarMobile}
@@ -63,51 +62,40 @@ const SidebarMenu = (props) => {
               </NavLink>
             </li>
             <li>
-                <NavLink
-                    onClick={toggleSidebarMobile}
-                    activeClassName="active"
-                    className="nav-link-simple"
-                    to="/Keywords">
-              <span className="sidebar-icon">
-                <FilterListTwoToneIcon />
-              </span>
-                    Keywords
-                    <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
-                <ChevronRightTwoToneIcon />
-              </span>
-                </NavLink>
-            </li>
-            <li>
               <NavLink
                 onClick={toggleSidebarMobile}
                 activeClassName="active"
                 className="nav-link-simple"
-                to="/SendMessage">
+                to="/Keywords">
                 <span className="sidebar-icon">
-                  <PeopleAltTwoToneIcon />
+                  <VerifiedUserTwoToneIcon />
                 </span>
-                Send Message
+                Keywords
                 <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
                   <ChevronRightTwoToneIcon />
                 </span>
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                onClick={toggleSidebarMobile}
-                activeClassName="active"
-                className="nav-link-simple"
-                to="/Settings">
+              <li>
+                  <NavLink
+                      onClick={toggleSidebarMobile}
+                      activeClassName="active"
+                      className="nav-link-simple"
+                      to="/Senders">
                 <span className="sidebar-icon">
-                  <SettingsTwoToneIcon />
+                  <VerifiedUserTwoToneIcon />
                 </span>
-                Settings
-                <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
+                      Senders
+                      <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
                   <ChevronRightTwoToneIcon />
                 </span>
-              </NavLink>
-            </li>
+                  </NavLink>
+              </li>
           </ul>
+          <div className="sidebar-header">
+            <span>Others</span>
+          </div>
+
         </div>
       </PerfectScrollbar>
     </>

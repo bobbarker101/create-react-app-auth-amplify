@@ -10,4 +10,3 @@ export { default as SidebarFooter } from './SidebarFooter';
 export { default as Footer } from './Footer';
 export { default as PromoSection } from './PromoSection';
 export { default as PageTitle } from './PageTitle';
-;

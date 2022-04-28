@@ -1,42 +1,95 @@
 {
-  "paths": [
-    {
-      "name": "/pilot/reports",
-      "lambdaFunction": "PilotReportsCrud",
-      "privacy": {
-        "private": true,
-        "auth": [
-          "/POST",
-          "/GET",
-          "/PUT",
-          "/PATCH",
-          "/DELETE"
-        ]
-      },
-      "policyResourceName": "/pilot/reports"
-    }
-  ],
-  "resourceName": "PilotApi",
-  "apiName": "PilotApi",
-  "functionArns": [
-    {
-      "lambdaFunction": "PilotReportsCrud"
-    }
-  ],
-  "privacy": {
-    "auth": 1,
-    "unauth": 0,
-    "authRoleName": "amplify-authcra-devp-100337-authRole",
-    "unAuthRoleName": "amplify-authcra-devp-100337-unauthRole"
-  },
-  "dependsOn": [
-    {
-      "category": "function",
-      "resourceName": "PilotReportsCrud",
-      "attributes": [
-        "Name",
-        "Arn"
-      ]
-    }
-  ]
+    "paths": [
+        {
+            "name": "/pilot/reports",
+            "lambdaFunction": "PilotReportsCrud",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/pilot/reports"
+        },
+        {
+            "name": "/pilot/keywords",
+            "lambdaFunction": "PilotKeywordsCrud",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/pilot/keywords"
+        },
+        {
+            "name": "/pilot/senders",
+            "lambdaFunction": "PilotSendersCrud",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/pilot/senders"
+        }
+    ],
+    "resourceName": "PilotApi",
+    "apiName": "PilotApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "PilotReportsCrud"
+        },
+        {
+            "lambdaFunction": "PilotKeywordsCrud"
+        },
+        {
+            "lambdaFunction": "PilotSendersCrud"
+        }
+    ],
+    "privacy": {
+        "auth": 3,
+        "unauth": 0,
+        "authRoleName": "amplify-authcra-devp-100337-authRole",
+        "unAuthRoleName": "amplify-authcra-devp-100337-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "PilotReportsCrud",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "PilotKeywordsCrud",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "PilotSendersCrud",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "d1bed3ed"
 }

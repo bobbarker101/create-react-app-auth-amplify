@@ -15,7 +15,7 @@ export default function Keywords() {
         titleHeading="Keywords"
         titleDescription="Add, edit and delete your keywords on this page.">
       </PageTitle>
-        {(keywords.data && senders.length>0) &&
+        {(keywords.length>0 && senders.length>0) &&
             <KeywordsTable keywords={keywords} senders={senders}/>
         }
 

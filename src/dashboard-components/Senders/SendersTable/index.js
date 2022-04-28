@@ -15,15 +15,12 @@ import {
   Select
 } from '@material-ui/core';
 
-export default function KeywordsTable(props){
+export default function SendersTable(props){
 
-    let keywords = props.keywords;
     let senders = props.senders;
-    console.log("olOOOOLd")
-    console.log(props);
     const [state, changeState] = useState({
         tableData: {
-            data: props.keywords.length>0 ? props.keywords : [],
+            data: props.senders.length>0 ? props.senders : [],
             resolve: () => {},
             updatedAt: new Date()
         },
@@ -31,16 +28,18 @@ export default function KeywordsTable(props){
         lookedUp: false
     });
 
-    const codeLookup = {}
-    senders.map((sender) => codeLookup[sender.PK_senderId] = sender.PK_senderId);
-    console.log("doubled ");
-    console.log(codeLookup);
 
     const comonscol = [
-        { title: "Keyword", field: "keyword", editable: 'onAdd' },
-        { title: "Number", field: "number", lookup: codeLookup, editable: 'onAdd'},
-        { title: "Response Message", field: "responseMessage", width: "60%" },
-        { title: "Subscription ID", field: "subscriptionId", editable: 'never' },
+        { title: "Name", field: "senderDisplayName"},
+        { title: "Sender ID", field: "PK_senderId", editable: 'onAdd' },
+        //{ title: "User ID", field: "SK_userId", editable: 'onAdd'},
+        { title: "Country", field: "country" },
+        { title: "Route", field: "route", editable: 'never' },
+        { title: "Sender Type", field: "senderType", lookup: {"ShortCodes":'sc', "LongCodes":'lc'}},
+        //{ title: "TermsUrl", field: "termsUrl"},
+       // { title: "Subscription ID", field: "inboundUrl", editable: 'never' },
+        //{ title: "Response Message", field: "lastUpdate" },
+        { title: "Carrier Surcharge", field: "carrierSurcharge" },
 
     ];
 
@@ -52,7 +51,7 @@ export default function KeywordsTable(props){
                 <div className="divider mb-4" />
                 <Container>
                     <Grid container spacing={8} justify="center" >
-                        {keywords.length>0 &&
+                        {senders.length>0 &&
                             <div>
                                 <Table tableData={state.tableData} comonscol={comonscol}/>
                             </div>

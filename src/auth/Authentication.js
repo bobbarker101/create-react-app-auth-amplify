@@ -48,7 +48,7 @@ class Authentication extends Component {
                     });
                 /**
                  * set senders
-                 *
+                 */
                 API.get('PilotApi', '/pilot/senders', {
                     headers: {
                         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ class Authentication extends Component {
                     });
                 /**
                  * set keywords
-                 *
+                 */
                 API.get('PilotApi', '/pilot/keywords', {
                     headers: {
                         'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ class Authentication extends Component {
                         console.log(error);
                         return error;
                     });
-                */
+
 
             })
             .catch((error) => {
