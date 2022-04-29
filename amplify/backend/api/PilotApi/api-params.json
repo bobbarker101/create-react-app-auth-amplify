@@ -44,6 +44,21 @@
                 ]
             },
             "policyResourceName": "/pilot/senders"
+        },
+        {
+            "name": "/pilot/rates",
+            "lambdaFunction": "PilotRatesCrud",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/pilot/rates"
         }
     ],
     "resourceName": "PilotApi",
@@ -57,10 +72,13 @@
         },
         {
             "lambdaFunction": "PilotSendersCrud"
+        },
+        {
+            "lambdaFunction": "PilotRatesCrud"
         }
     ],
     "privacy": {
-        "auth": 3,
+        "auth": 4,
         "unauth": 0,
         "authRoleName": "amplify-authcra-devp-100337-authRole",
         "unAuthRoleName": "amplify-authcra-devp-100337-unauthRole"
@@ -89,7 +107,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "PilotRatesCrud",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "d1bed3ed"
+    "uuid": "b4fac0f7"
 }

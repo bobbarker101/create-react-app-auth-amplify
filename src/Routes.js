@@ -22,6 +22,7 @@ import Keywords from './dashboard-pages/Keywords';
 import PageError404 from './dashboard-pages/PageError404';
 import SendMessage from './dashboard-pages/SendMessage';
 import Senders from './dashboard-pages/Senders';
+import Rates from './dashboard-pages/Rates';
 //const Homepage = lazy(() => import('./example-pages/Homepage'));
 
 const Routes = (auth) => {
@@ -98,6 +99,7 @@ const Routes = (auth) => {
                   '/SendMessage',
                   '/Keywords',
                   '/Senders',
+                  '/Rates',
               ]}>
               <LeftSidebar>
                 <Switch location={location} key={location.pathname}  >
@@ -111,6 +113,7 @@ const Routes = (auth) => {
                       <Route path="/Keywords" component={Keywords} />
                       <Route path="/SendMessage" component={SendMessage} />
                       <Route path="/Senders" component={Senders} />
+                      <Route path="/Rates" component={Rates} />
                   </motion.div>
                 </Switch>
               </LeftSidebar>

@@ -31,6 +31,10 @@
         "PilotSendersCrud": {
           "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
           "s3Key": "amplify-builds/PilotSendersCrud-51653330515156513344-build.zip"
+        },
+        "PilotRatesCrud": {
+          "deploymentBucketName": "amplify-authcra-devp-100337-deployment",
+          "s3Key": "amplify-builds/PilotRatesCrud-30616f4e732f68627478-build.zip"
         }
       }
     }

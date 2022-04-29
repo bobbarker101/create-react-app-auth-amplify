@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setReports, setUser, setKeywords, setSenders, setSubscriptions, setSubscribers} from "../reducers/UserOptions";
+import {setReports, setUser, setKeywords, setSenders, setSubscriptions, setSubscribers, setRates} from "../reducers/UserOptions";
 import { API } from "aws-amplify/lib-esm/index";
 import { Auth } from "aws-amplify/lib-esm/index";
 import Amplify from "aws-amplify/lib-esm/index";
@@ -81,6 +81,24 @@ class Authentication extends Component {
                         return error;
                     });
 
+                /**
+                 * set Rates
+                 */
+                API.get('PilotApi', '/pilot/rates', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': apiKey
+                    }
+                })
+                    .then((result) => {
+                        this.props.setRates(result);
+                    })
+                    .catch((error) => {
+                        console.log('ERROR');
+                        console.log(error);
+                        return error;
+                    });
+
 
             })
             .catch((error) => {
@@ -106,6 +124,7 @@ const mapDispatchToProps = (dispatch) => ({
     setReports: (reports) => dispatch(setReports(reports)),
     setSenders: (senders) => dispatch(setSenders(senders)),
     setKeywords: (keywords) => dispatch(setKeywords(keywords)),
+    setRates: (rates) => dispatch(setRates(rates)),
     setSubscriptions: (subscriptions) => dispatch(setSubscriptions(subscriptions)),
     setSubscribers: (subscribers) => dispatch(setSubscribers(subscribers))
 });

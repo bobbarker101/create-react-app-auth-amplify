@@ -5,6 +5,7 @@ export const SET_SENDERS = 'USER_OPTIONS/SET_SENDERS';
 export const SET_REPORTS = 'USER_OPTIONS/SET_REPORTS';
 export const SET_SUBSCRIPTIONS = 'USER_OPTIONS/SET_SUBSCRIPTIONS';
 export const SET_SUBSCRIBERS = 'USER_OPTIONS/SET_SUBSCRIBERS';
+export const SET_RATES = 'USER_OPTIONS/SET_RATES';
 
 export const SET_KEYWORDS = 'USER_OPTIONS/SET_KEYWORDS';
 export const ADD_KEYWORDS = 'USER_OPTIONS/ADD_KEYWORDS';
@@ -53,6 +54,14 @@ export const setSubscribers = (subscribers) => ({
 });
 
 /**
+ * Rates
+ */
+export const setRates = (rates) => ({
+    type: SET_RATES,
+    rates
+});
+
+/**
  * Keywords
  */
 
@@ -89,6 +98,7 @@ export default function reducer(
         keywords: {},
         subscriptions: {},
         subscribers: {},
+        rates: {},
     },
     action
 ) {
@@ -126,6 +136,12 @@ export default function reducer(
             return {
                 ...state,
                 subscribers: action.subscribers
+            };
+        // rates
+        case SET_RATES:
+            return {
+                ...state,
+                rates: action.rates
             };
 
             /**
