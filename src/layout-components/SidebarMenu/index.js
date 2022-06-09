@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { Collapse } from '@material-ui/core';
 
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
 import { setSidebarToggleMobile } from '../../reducers/ThemeOptions';
@@ -30,6 +30,7 @@ import FilterListTwoToneIcon from '@material-ui/icons/FilterListTwoTone';
 import { SidebarWidget } from '../../layout-components';
 
 const SidebarMenu = (props) => {
+    const { reports } = useSelector(state => state.UserOptions);
   const { setSidebarToggleMobile } = props;
 
   const toggleSidebarMobile = () => setSidebarToggleMobile(false);
@@ -44,7 +45,10 @@ const SidebarMenu = (props) => {
     <>
       <PerfectScrollbar>
         <div className="sidebar-navigation">
-          <SidebarWidget />
+            {reports.data &&
+
+            <SidebarWidget reports={reports}/>
+            }
           <div className="sidebar-header">
             <span>Navigation</span>
           </div>

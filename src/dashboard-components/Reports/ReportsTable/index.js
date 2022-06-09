@@ -145,7 +145,7 @@ export default function ReportsTable(props){
                                 label="API Key"
                                 onChange={handleChange3}
                             >
-                                {Object.keys(reports).map((key) =>  <MenuItem value={key}>{key}</MenuItem> )};
+                                {Object.keys(reports).map((key) =>  <MenuItem value={key}>{reports[key][0].companyName}</MenuItem> )};
 
                             </Select>
                         </FormControl>

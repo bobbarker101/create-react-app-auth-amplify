@@ -3,7 +3,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { Auth } from 'aws-amplify';
 
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 
 import { setSidebarToggleMobile } from '../../reducers/ThemeOptions';
 
@@ -12,17 +12,18 @@ import HeaderSearch from '../../layout-components/HeaderSearch';
 import HeaderWidget from '../../layout-components/HeaderWidget';
 
 const Header = (props) => {
+    const { reports } = useSelector(state => state.UserOptions);
   const {
     headerShadow,
     headerBgTransparent,
     sidebarToggleMobile,
     setSidebarToggleMobile
   } = props;
-
   const toggleSidebarMobile = () => {
     setSidebarToggleMobile(!sidebarToggleMobile);
   };
-
+   // console.log('reports')
+//console.log(reports)
   return (
     <>
       <div
@@ -45,7 +46,10 @@ const Header = (props) => {
             {/*
           <HeaderSearch />
           */}
-          <HeaderWidget />
+            {reports.data &&
+
+            <HeaderWidget reports={reports}/>
+            }
         </div>
         <div className="app-header--pane">
           <button onClick={Auth.signOut()}>

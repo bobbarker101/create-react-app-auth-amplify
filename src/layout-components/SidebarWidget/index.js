@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core';
 import TrendingDownTwoToneIcon from '@material-ui/icons/TrendingDownTwoTone';
 
 import Chart from 'react-apexcharts';
-const SidebarWidget = () => {
+const SidebarWidget = (props) => {
   const chart33Options = {
     chart: {
       toolbar: {
@@ -67,6 +67,7 @@ const SidebarWidget = () => {
       data: [47, 45, 54, 38, 56, 24, 65]
     }
   ];
+    let val1 = parseFloat(props.reports.totalPerMonth[Object.keys(props.reports.totalPerMonth)[Object.keys(props.reports.totalPerMonth).length-1]]).toFixed(2);
 
   return (
     <>
@@ -91,7 +92,7 @@ const SidebarWidget = () => {
               </div>
               <div className="text-left ml-3">
                 <div className="d-flex align-items-center justify-content-between">
-                  <div className="font-weight-bold">2.4895 BTC</div>
+                  <div className="font-weight-bold">{val1} BTC</div>
                   <div className="badge badge-neutral-danger ml-2 text-danger">
                     -8%
                   </div>

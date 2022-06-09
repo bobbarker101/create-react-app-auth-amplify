@@ -216,6 +216,10 @@ function Table(props) {
                 data={data}
                 columns={columns}
                 title="Line Items"
+                options={{
+                    pageSize:10,
+                    pageSizeOptions:[10,20,30],
+                }}
                 editable={{
                     isEditable: rowData => true,
                     isDeletable: rowData => true,
