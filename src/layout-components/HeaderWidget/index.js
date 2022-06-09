@@ -7,8 +7,6 @@ import TrendingDownTwoToneIcon from '@material-ui/icons/TrendingDownTwoTone';
 
 
 const HeaderMenu = (props) => {
-  console.log("headermenue");
-  console.log(props.reports);
 
     let val1 = parseFloat(props.reports.totalPerMonth[Object.keys(props.reports.totalPerMonth)[Object.keys(props.reports.totalPerMonth).length-1]]).toFixed(2);
     let val2 = parseFloat(props.reports.totalPerMonth[Object.keys(props.reports.totalPerMonth)[Object.keys(props.reports.totalPerMonth).length-2]]).toFixed(2);
@@ -39,7 +37,7 @@ const HeaderMenu = (props) => {
                 <div className="d-flex align-items-center justify-content-center pt-1">
                   <span className="font-weight-bold font-size-lg line-height-1">
                     <small className="opacity-6 pr-1">$</small>
-                      {val2}
+                      {val2.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                   </span>
                     {(((val2 - val3) / val3) * 100).toFixed(2) > 0 ?
                       <div className="badge badge-neutral-success text-success ml-2">
@@ -73,7 +71,7 @@ const HeaderMenu = (props) => {
                   <span className="font-weight-bold font-size-lg line-height-1">
                     <small className="opacity-6 pr-1">$</small>
 
-                      {val1}
+                      {val1.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
                   </span>
                 {(((val1 - val2) / val2) * 100).toFixed(2) > 0 ?
                   <div className="badge badge-neutral-success text-success ml-2">
