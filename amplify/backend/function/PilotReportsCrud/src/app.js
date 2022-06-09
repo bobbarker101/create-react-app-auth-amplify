@@ -41,7 +41,11 @@ app.use(function(req, res, next) {
 
 app.get(path, function(req, res) {
   var params = {
-    TableName: tableName
+    TableName: tableName,
+      FilterExpression: 'SK_startEpochTime > :num',
+      ExpressionAttributeValues: {
+          ':num': 2021010120210131
+      }
   };
   var returnData = {
     data:  {},
@@ -87,8 +91,55 @@ app.get(path, function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/item', function(req, res) {
+app.get(path+'/monthtotal', function(req, res) {
   // Add your code here
+
+    let m = new Date().getMonth() + 1;
+    let y = new Date().getFullYear();
+    let start_date = moment(m+"/"+y, "M/YYYY").toISOString();
+    let end_date = moment(m+"/"+y, "M/YYYY").endOf('month').toISOString();
+    var params = {
+        ExpressionAttributeValues: {
+            ':s': 2,
+            ':e': 9,
+            ':topic': 'PHRASE'
+        },
+        KeyConditionExpression: 'Season = :s and Episode > :e',
+        FilterExpression: 'contains (Subtitle, :topic)',
+        TableName: tableName
+    };
+
+    docClient.query(params, function(err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log("Success", data.Items);
+
+            let lm = (new Date()).getMonth() === 0 ? 12 : (new Date()).getMonth();
+            let ly = (new Date()).getMonth() === 0 ? new Date().getFullYear() - 1 : new Date().getFullYear();
+            let lstart_date = moment(lm+"/"+ly, "M/YYYY").toISOString();
+            let lend_date = moment(lm+"/"+ly, "M/YYYY").endOf('month').toISOString();
+            var params = {
+                ExpressionAttributeValues: {
+                    ':s': 2,
+                    ':e': 9,
+                    ':topic': 'PHRASE'
+                },
+                KeyConditionExpression: 'Season = :s and Episode > :e',
+                FilterExpression: 'contains (Subtitle, :topic)',
+                TableName: tableName
+            };
+
+            docClient.query(params, function(err, data) {
+                if (err) {
+                    console.log("Error", err);
+                } else {
+                    console.log("Success", data.Items);
+                }
+            });
+        }
+    });
+
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 

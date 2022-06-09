@@ -13,7 +13,8 @@ import {
   setSidebarToggleMobile
 } from '../../reducers/ThemeOptions';
 
-import projectLogo from '../../assets/images/react.svg';
+import projectLogo from '../../assets/images/react.svg';//react.svg';
+import logo2 from '../../assets/images/cobrand2.png';
 
 const SidebarHeader = (props) => {
   const toggleSidebarMobile = () => {
@@ -45,9 +46,11 @@ const SidebarHeader = (props) => {
               />
             </div>
             <div className="app-sidebar-logo--text">
-              <span>Crypto</span>
-
-              <b>bamburgh</b>
+                <img
+                    alt="Txtwire mMbilehelm"
+                    src={logo2}
+                    style={{ maxWidth: 200 }}
+                />
             </div>
           </NavLink>
         </div>

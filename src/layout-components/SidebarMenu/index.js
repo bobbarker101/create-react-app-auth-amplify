@@ -13,6 +13,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import ChevronRightTwoToneIcon from '@material-ui/icons/ChevronRightTwoTone';
 import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
 import AttachMoneyTwoTone from '@material-ui/icons/AttachMoneyTwoTone';
+import TrendingUpTwoToneIcon from '@material-ui/icons/TrendingUpTwoTone';
 import SendTwoTone from '@material-ui/icons/SendTwoTone';
 
 import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
@@ -63,6 +64,21 @@ const SidebarMenu = (props) => {
                 </span>
               </NavLink>
             </li>
+              <li>
+                  <NavLink
+                      onClick={toggleSidebarMobile}
+                      activeClassName="active"
+                      className="nav-link-simple"
+                      to="/Reports">
+                <span className="sidebar-icon">
+                  <TrendingUpTwoToneIcon />
+                </span>
+                      Reports
+                      <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
+                  <ChevronRightTwoToneIcon />
+                </span>
+                  </NavLink>
+              </li>
             <li>
               <NavLink
                 onClick={toggleSidebarMobile}

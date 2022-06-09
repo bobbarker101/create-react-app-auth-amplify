@@ -1,6 +1,7 @@
 import React from 'react';
 
 import clsx from 'clsx';
+import { Auth } from 'aws-amplify';
 
 import { connect } from 'react-redux';
 
@@ -30,6 +31,7 @@ const Header = (props) => {
           'app-header--opacity-bg': headerBgTransparent
         })}>
         <div className="app-header--pane">
+
           <button
             className={clsx(
               'navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn',
@@ -40,11 +42,18 @@ const Header = (props) => {
               <span className="hamburger-inner" />
             </span>
           </button>
+            {/*
           <HeaderSearch />
+          */}
           <HeaderWidget />
         </div>
         <div className="app-header--pane">
+          <button onClick={Auth.signOut()}>
+            Logout
+          </button>
+            {/*
           <HeaderUserbox />
+          */}
         </div>
       </div>
     </>

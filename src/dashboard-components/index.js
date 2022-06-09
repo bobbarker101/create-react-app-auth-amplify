@@ -36,3 +36,4 @@ export { default as PageError4041 } from './PageError4041';
 export { default as SendMessageProfileForms } from './SendMessageProfileForms';
 export { default as SendMessagePageTitleActions } from './SendMessagePageTitleActions';
 export { default as KeywordsTable } from './KeywordsTable';
+export { default as ReportsTable } from './ReportsTable';

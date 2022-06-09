@@ -18,6 +18,7 @@ import {
 // Example Pages
 
 import Overview from './dashboard-pages/Overview';
+import Reports from './dashboard-pages/Reports';
 import Keywords from './dashboard-pages/Keywords';
 import PageError404 from './dashboard-pages/PageError404';
 import SendMessage from './dashboard-pages/SendMessage';
@@ -96,6 +97,7 @@ const Routes = (auth) => {
             <Route
               path={[
                   '/Overview',
+                  '/Reports',
                   '/SendMessage',
                   '/Keywords',
                   '/Senders',
@@ -109,7 +111,8 @@ const Routes = (auth) => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route path="/Overview" component={Overview} />
+                      <Route path="/Overview" component={Overview} />
+                      <Route path="/Reports" component={Reports} />
                       <Route path="/Keywords" component={Keywords} />
                       <Route path="/SendMessage" component={SendMessage} />
                       <Route path="/Senders" component={Senders} />
