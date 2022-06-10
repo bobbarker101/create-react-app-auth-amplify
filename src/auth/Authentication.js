@@ -110,7 +110,6 @@ class Authentication extends Component {
     render()
     {
         const {children} = this.props;
-        console.log(this.props)
         return (
             <React.Fragment>
                 {children}

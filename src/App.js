@@ -9,7 +9,6 @@ import './assets/base.scss';
 import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import Amplify from 'aws-amplify';
-//import { Auth } from 'aws-amplify';
 import { API } from 'aws-amplify';
 import aws_exports from './aws-exports';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -264,7 +263,6 @@ library.add(
   faSignOutAlt,
   faLink
 );
-import { setUser } from './reducers/UserOptions';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 Amplify.configure(aws_exports);

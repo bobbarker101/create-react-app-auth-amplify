@@ -28,6 +28,7 @@ export { default as TransactionsHistory } from './TransactionsHistory';
 export { default as TransactionsOrders } from './TransactionsOrders';
 export { default as TransactionsPageTitleActions } from './TransactionsPageTitleActions';
 export { default as WalletsChart } from './WalletsChart';
+export { default as MessagesChart } from './MessagesChart';
 export { default as WalletsPageTitleActions } from './WalletsPageTitleActions';
 export { default as PageLoginCover1 } from './PageLoginCover1';
 export { default as PageRegisterCover1 } from './PageRegisterCover1';

@@ -213,6 +213,10 @@ function Table(props) {
                 data={data}
                 columns={columns}
                 title="Edit Keywords"
+                options={{
+                    pageSize:10,
+                    pageSizeOptions:[10,20,30],
+                }}
                 editable={{
                     isEditable: rowData => true,
                     isDeletable: rowData => true,

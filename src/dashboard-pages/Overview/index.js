@@ -12,10 +12,11 @@ import OverviewPriceWatch from '../../dashboard-components/Overview/OverviewPric
 import OverviewWallets from '../../dashboard-components/Overview/OverviewWallets';
 import OverviewPageTitleActions from '../../dashboard-components/Overview/OverviewPageTitleActions';
 import OverviewHeaderChart from '../../dashboard-components/Overview/OverviewHeaderChart';
+import MessagesChart from '../../dashboard-components/Overview/MessagesChart';
 import { useSelector } from "react-redux";
 
 export default function Overview() {
-    const { keywords, senders, subscriptions, subscribers, reports} = useSelector(state => state.UserOptions);
+    const { keywords, senders,  reports} = useSelector(state => state.UserOptions);
   return (
     <>
       <PageTitle
@@ -24,12 +25,18 @@ export default function Overview() {
         <OverviewPageTitleActions />
       </PageTitle>
         <OverviewWatchlist />
-        {(reports.data && senders.length > 0 && keywords.data  && subscribers.length > 0 ) &&
-        <OverviewHeaderChart reports={reports} senders={senders} keywords={keywords} subscribers={subscribers} />
+        {(reports.data && senders.length > 0 && keywords.data ) &&
+        <OverviewHeaderChart reports={reports} senders={senders} keywords={keywords}  />
+
+        }
+        {(reports.data ) &&
+        <MessagesChart reports={reports} senders={senders} keywords={keywords}  />
+
         }
       <Grid container spacing={6}>
         <Grid item xl={5} className="d-flex">
           <OverviewPortfolio />
+
         </Grid>
         <Grid item xl={7}>
           <OverviewPriceWatch />
