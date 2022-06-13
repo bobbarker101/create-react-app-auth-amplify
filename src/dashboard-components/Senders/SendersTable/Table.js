@@ -218,11 +218,11 @@ function Table(props) {
                     pageSizeOptions:[10,20,30],
                 }}
                 editable={{
-                    isEditable: rowData => true,
-                    isDeletable: rowData => true,
-                    onRowAdd: onRowAdd,
-                    onRowUpdate: onRowUpdate,
-                    onRowDelete: onRowDelete
+                   // isEditable: rowData => true,
+                    //isDeletable: rowData => true,
+                    //onRowAdd: onRowAdd,
+                    //onRowUpdate: onRowUpdate,
+                    //onRowDelete: onRowDelete
                 }}
             />
         </div>

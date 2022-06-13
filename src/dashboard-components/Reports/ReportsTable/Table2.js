@@ -220,12 +220,18 @@ function Table(props) {
                     pageSize:10,
                     pageSizeOptions:[10,20,30],
                 }}
+                Cell={ cell => {
+                    const value = sumColumnFormatter(cell.row, param1, param2);
+                    return (
+                    <span> {value}</span>
+                    )
+                }}
                 editable={{
-                    isEditable: rowData => true,
-                    isDeletable: rowData => true,
-                    onRowAdd: onRowAdd,
-                    onRowUpdate: onRowUpdate,
-                    onRowDelete: onRowDelete
+                   // isEditable: rowData => true,
+                    //isDeletable: rowData => true,
+                    //onRowAdd: onRowAdd,
+                    //onRowUpdate: onRowUpdate,
+                    //onRowDelete: onRowDelete
                 }}
             />
         </div>

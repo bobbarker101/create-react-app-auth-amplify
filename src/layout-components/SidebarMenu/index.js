@@ -45,9 +45,11 @@ const SidebarMenu = (props) => {
     <>
       <PerfectScrollbar>
         <div className="sidebar-navigation">
-            {reports.data &&
+            {reports.data
+                &&
 
-            <SidebarWidget reports={reports}/>
+                <SidebarWidget reports={reports}/>
+
             }
           <div className="sidebar-header">
             <span>Navigation</span>

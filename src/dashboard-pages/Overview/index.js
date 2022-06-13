@@ -20,19 +20,24 @@ export default function Overview() {
   return (
     <>
       <PageTitle
-        titleHeading="Welcome back, Satoshi"
+        titleHeading="Welcome back"
         titleDescription="This page shows an overview for your account summary.">
+          {/*
         <OverviewPageTitleActions />
+        */}
       </PageTitle>
+        {/*}
         <OverviewWatchlist />
         {(reports.data && senders.length > 0 && keywords.data ) &&
         <OverviewHeaderChart reports={reports} senders={senders} keywords={keywords}  />
 
         }
+        */}
         {(reports.data ) &&
         <MessagesChart reports={reports} senders={senders} keywords={keywords}  />
 
         }
+        {/*
       <Grid container spacing={6}>
         <Grid item xl={5} className="d-flex">
           <OverviewPortfolio />
@@ -51,6 +56,7 @@ export default function Overview() {
       </Grid>
 
       <OverviewVerification />
+      */}
     </>
   );
 }
