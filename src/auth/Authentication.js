@@ -98,6 +98,23 @@ class Authentication extends Component {
                         console.log(error);
                         return error;
                     });
+                /**
+                 * set Tnc
+                 */
+                API.get('PilotApi', '/pilot/tnc', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': apiKey
+                    }
+                })
+                    .then((result) => {
+                        this.props.setTnc(result);
+                    })
+                    .catch((error) => {
+                        console.log('ERROR');
+                        console.log(error);
+                        return error;
+                    });
 
 
             })

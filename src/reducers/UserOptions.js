@@ -8,7 +8,7 @@ export const SET_SUBSCRIBERS = 'USER_OPTIONS/SET_SUBSCRIBERS';
 export const SET_RATES = 'USER_OPTIONS/SET_RATES';
 
 export const SET_KEYWORDS = 'USER_OPTIONS/SET_KEYWORDS';
-export const ADD_KEYWORDS = 'USER_OPTIONS/ADD_KEYWORDS';
+export const SET_TNC = 'USER_OPTIONS/SET_TNC';
 export const UPDATE_KEYWORDS = 'USER_OPTIONS/UPDATE_KEYWORDS';
 export const DELETE_KEYWORDS = 'USER_OPTIONS/DELETE_KEYWORDS';
 
@@ -72,9 +72,9 @@ export const setKeywords = (keywords) => {
             });
 }
 
-export const addKeywords = (keywords) => ({
-    type: ADD_KEYWORDS,
-    keywords
+export const setTnc = (tnc) => ({
+    type: SET_TNC,
+    tnc
 });
 
 export const updateKeywords = (keywords) => ({
@@ -99,6 +99,7 @@ export default function reducer(
         subscriptions: {},
         subscribers: {},
         rates: {},
+        tnc: {},
     },
     action
 ) {
@@ -152,10 +153,10 @@ export default function reducer(
                 ...state,
                 keywords: action.keywords
             };
-        case ADD_KEYWORDS:
+        case SET_TNC:
             return {
                 ...state,
-                keywords: action.keywords
+                tnc: action.tnc
             };
         case UPDATE_KEYWORDS:
             return {
