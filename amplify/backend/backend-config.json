@@ -31,6 +31,11 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "PilotTncCrud": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -65,6 +70,14 @@
         {
           "category": "function",
           "resourceName": "PilotRatesCrud",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "PilotTncCrud",
           "attributes": [
             "Name",
             "Arn"

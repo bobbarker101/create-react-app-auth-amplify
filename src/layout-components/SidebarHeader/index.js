@@ -37,17 +37,17 @@ const SidebarHeader = (props) => {
         <div className="app-sidebar-logo">
           <NavLink
             to="/"
-            title="Bamburgh React Crypto Application with Material-UI PRO"
+            title="Txtwire Mobilehelm"
             className="app-sidebar-logo">
             <div className="app-sidebar-logo--icon">
               <img
-                alt="Bamburgh React Crypto Application with Material-UI PRO"
+                alt="Txtwire Mobilehelm"
                 src={projectLogo}
               />
             </div>
             <div className="app-sidebar-logo--text">
                 <img
-                    alt="Txtwire mMbilehelm"
+                    alt="Txtwire Mobilehelm"
                     src={logo2}
                     style={{ maxWidth: 200 }}
                 />
