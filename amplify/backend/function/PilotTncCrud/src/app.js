@@ -106,26 +106,32 @@ app.put('/pilot/tnc', function(req, res) {
     const params = {
         TableName: tableName,
         Key: {
-            "id": "1"
+            "PK_senderId": req.body.PK_senderId,
+            "SK_epochTime": req.body.SK_epochTime
         },
-        UpdateExpression: "set variable1 = :x, #MyVariable = :y",
+        UpdateExpression: "set companyName = :companyName, description = :description, #keyword = :keyword, logoUrl = :logoUrl, privacyPolicyUrl = :privacyPolicyUrl, supportEmail = :supportEmail",
         ExpressionAttributeNames: {
-            "#MyVariable": "variable23"
+            "#keyword": "keyword"
         },
         ExpressionAttributeValues: {
-            ":x": "hello2",
-            ":y": "dog"
+            ":companyName": req.body.companyName,
+            ":description": req.body.description,
+            ":keyword": req.body.keyword,
+            ":logoUrl": req.body.logoUrl,
+            ":privacyPolicyUrl": req.body.privacyPolicyUrl,
+            ":supportEmail": req.body.supportEmail
         }
     };
 
     dynamodb.update(params, function(err) {
         if (err) {
-            console.error("Unable to find movie", err);
+            console.error("Unable to add movie", err);
+            res.json({error: err});
         } else {
-            console.log(`Updated ${title} with new RT Score of ${newRtScore}%`);
+            console.log(`updated to table`);
+            res.json({body: "Item has been updated."})
         }
     });
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
 
@@ -137,25 +143,30 @@ app.put('/pilot/tnc', function(req, res) {
 app.delete('/pilot/tnc', function(req, res) {
   // Add your code here
     const params = {
-        TableName: "MYTABLE",
+        TableName: tableName,
         Key: {
-            "id": "1"
+            "PK_senderId": req.body.PK_senderId,
+            "SK_epochTime": req.body.SK_epochTime
         },
-        UpdateExpression: "set variable1 = :x, #MyVariable = :y",
+        UpdateExpression: "set #enabled = :x",
         ExpressionAttributeNames: {
-            "#MyVariable": "variable23"
+            "#enabled": "enabled"
         },
         ExpressionAttributeValues: {
-            ":x": "hello2",
-            ":y": "dog"
+            ":x": false
         }
     };
 
     dynamodb.update(params, function(err, data) {
-        if (err) console.log(err);
-        else console.log(data);
+        if (err) {
+            console.error("Unable to add movie", err);
+            res.json({error: err});
+        } else {
+            console.log(`deleted to table`);
+            res.json({body: "Item has been deleted."})
+        }
     });
-  res.json({success: 'delete call succeed!', url: req.url});
+
 });
 
 
