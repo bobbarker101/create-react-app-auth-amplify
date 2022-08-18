@@ -39,7 +39,14 @@ app.use(function(req, res, next) {
 
 app.get('/pilot/tnc', function(req, res) {
     var params = {
-        TableName: tableName
+        TableName: tableName,
+        FilterExpression: '#e = :e',
+        ExpressionAttributeNames: {
+            '#e': 'enabled',
+        },
+        ExpressionAttributeValues: {
+            ':e': true,
+        },
     };
     var returnData = [];
     console.log("Scanning senders table. ");

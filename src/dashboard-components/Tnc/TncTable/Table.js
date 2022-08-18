@@ -91,7 +91,7 @@ function Table(props) {
                         data.push(newData);
                         props.setTnc({data: data, count: data.length});
                         setGridData({ ...gridData, data, resolve, updatedAt });
-                        toast.success(result.success);
+                        toast.success(result.body);
                     }
 
 
@@ -117,13 +117,13 @@ function Table(props) {
             toast.success("Keyword Deleted Successfully.");
             */
             let apiName = 'PilotApi';
-            let path = '/pilot/tnc/'+oldData.keyword+'/'+oldData.number;
+            let path = '/pilot/tnc';
             let myInit = {
                 headers: {
                     'Content-Type': 'application/json',
                     'x-api-key': apiKey
                 },
-                body: {}
+                body: {"PK_senderId": oldData.PK_senderId, "SK_epochTime": oldData.SK_epochTime}
             };
             API.del(apiName, path, myInit)
                 .then((result) => {
