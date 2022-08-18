@@ -101,7 +101,7 @@ app.put('/pilot/tnc', function(req, res) {
 * Example put method *
 ****************************/
 
-app.update('/pilot/tnc', function(req, res) {
+app.put('/pilot/tnc', function(req, res) {
   // Add your code here
     const params = {
         TableName: tableName,

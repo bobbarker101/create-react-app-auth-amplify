@@ -66,6 +66,8 @@ function Table(props) {
 
     const onRowAdd = newData =>
         new Promise((resolve, reject) => {
+            newData.enabled = true;
+            newData.SK_epochTime = new Date().getTime();
             console.log(newData);
             let apiName = 'PilotApi';
             let path = '/pilot/tnc';
