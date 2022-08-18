@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {setReports, setUser, setKeywords, setSenders, setSubscriptions, setSubscribers, setRates} from "../reducers/UserOptions";
+import {setReports, setUser, setKeywords, setSenders, setSubscriptions, setSubscribers, setRates, setTnc} from "../reducers/UserOptions";
 import { API } from "aws-amplify/lib-esm/index";
 import { Auth } from "aws-amplify/lib-esm/index";
 import Amplify from "aws-amplify/lib-esm/index";
@@ -141,6 +141,7 @@ const mapDispatchToProps = (dispatch) => ({
     setSenders: (senders) => dispatch(setSenders(senders)),
     setKeywords: (keywords) => dispatch(setKeywords(keywords)),
     setRates: (rates) => dispatch(setRates(rates)),
+    setTnc: (tnc) => dispatch(setTnc(tnc)),
     setSubscriptions: (subscriptions) => dispatch(setSubscriptions(subscriptions)),
     setSubscribers: (subscribers) => dispatch(setSubscribers(subscribers))
 });

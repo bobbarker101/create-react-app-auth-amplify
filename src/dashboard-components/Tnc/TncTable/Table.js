@@ -74,14 +74,7 @@ function Table(props) {
                     'Content-Type': 'application/json',
                     'x-api-key': apiKey
                 },
-                body: {
-                    "autoSubscribe": true,
-                    "parentUserId": "100",
-                    "keyword": newData.keyword,
-                    "number": newData.number,
-                    "responseMessage": newData.responseMessage,
-                    "FK_parentUserId": "100"
-                }
+                body: newData
             };
             API.put(apiName, path, myInit)
                 .then((result) => {
@@ -90,7 +83,6 @@ function Table(props) {
                     if(result.error){
                         toast.warning(result.error);
                     }else{
-                        newData.subscriptionId = result.subscriptionId;
                         setcolumns([]);
                         const { data } = gridData;
                         const updatedAt = new Date();
@@ -213,13 +205,17 @@ function Table(props) {
                 columns={columns}
                 title="Edit Tnc"
                 options={{
+                    tableLayout: "fixed",
                     pageSize:10,
                     pageSizeOptions:[10,20,30],
+                    rowStyle: {
+                        overflowWrap: 'break-word'
+                    }
                 }}
                 editable={{
                     //isEditable: rowData => true,
                     //isDeletable: rowData => true,
-                    //onRowAdd: onRowAdd,
+                    onRowAdd: onRowAdd,
                     //onRowUpdate: onRowUpdate,
                     //onRowDelete: onRowDelete
                 }}

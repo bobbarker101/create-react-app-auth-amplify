@@ -71,32 +71,64 @@ app.get('/pilot/tnc', function(req, res) {
 
 
 /****************************
-* Example post method *
-****************************/
-
-app.post('/pilot/tnc', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-app.post('/pilot/tnc/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-/****************************
 * Example put method *
 ****************************/
 
 app.put('/pilot/tnc', function(req, res) {
   // Add your code here
+    console.log(req.body);
+
+    const params = {
+        TableName: tableName,
+        Item: req.body,
+    };
+
+    dynamodb.putItem(params, function(err) {
+        if (err) {
+            console.error("Unable to add movie", err);
+            res.json({error: err});
+        } else {
+            console.log(`Added to table`);
+            res.json({body: "Item has been added to data base."})
+        }
+    });
+
+});
+
+
+
+/****************************
+* Example put method *
+****************************/
+
+app.update('/pilot/tnc', function(req, res) {
+  // Add your code here
+    const params = {
+        TableName: tableName,
+        Key: {
+            "id": "1"
+        },
+        UpdateExpression: "set variable1 = :x, #MyVariable = :y",
+        ExpressionAttributeNames: {
+            "#MyVariable": "variable23"
+        },
+        ExpressionAttributeValues: {
+            ":x": "hello2",
+            ":y": "dog"
+        }
+    };
+
+    dynamodb.update(params, function(err) {
+        if (err) {
+            console.error("Unable to find movie", err);
+        } else {
+            console.log(`Updated ${title} with new RT Score of ${newRtScore}%`);
+        }
+    });
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/pilot/tnc/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+
 
 /****************************
 * Example delete method *
@@ -104,13 +136,28 @@ app.put('/pilot/tnc/*', function(req, res) {
 
 app.delete('/pilot/tnc', function(req, res) {
   // Add your code here
+    const params = {
+        TableName: "MYTABLE",
+        Key: {
+            "id": "1"
+        },
+        UpdateExpression: "set variable1 = :x, #MyVariable = :y",
+        ExpressionAttributeNames: {
+            "#MyVariable": "variable23"
+        },
+        ExpressionAttributeValues: {
+            ":x": "hello2",
+            ":y": "dog"
+        }
+    };
+
+    dynamodb.update(params, function(err, data) {
+        if (err) console.log(err);
+        else console.log(data);
+    });
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/pilot/tnc/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
 
 app.listen(3000, function() {
     console.log("App started")

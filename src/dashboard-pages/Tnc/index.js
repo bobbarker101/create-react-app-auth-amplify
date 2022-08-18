@@ -7,7 +7,7 @@ import { PageTitle } from 'layout-components';
 import TncTable from '../../dashboard-components/Tnc/TncTable';
 import { useSelector } from "react-redux";
 
-export default function Rates() {
+export default function Tnc() {
     const { tnc } = useSelector(state => state.UserOptions);
   return (
     <>
@@ -16,7 +16,7 @@ export default function Rates() {
         titleDescription="Add, edit and delete your Terms and Conditions page.">
       </PageTitle>
         {(tnc.length>0) &&
-            <RatesTable tnc={tnc} />
+            <TncTable tnc={tnc} />
         }
 
     </>

@@ -31,13 +31,13 @@ export default function TncTable(props){
 
 
     const comonscol = [
-        { title: "Name", field: "customerName" },
-        { title: "Cost", field: "cost" },
-        { title: "Rate", field: "rate" },
-        { title: "Rate Display Name", field: "rateDisplayName" },
-        { title: "Rate ID", field: "SK_rateId" },
-        { title: "Effective Date", field: "effectiveDate", type: 'date',
-            render: rowData => moment(rowData.effectiveDate).format('MM/DD/YYYY')},
+        { title: "SenderId", field: "PK_senderId"},
+        { title: "Company Name", field: "companyName"},
+        { title: "Description", field: "description"  },
+        { title: "Keyword", field: "keyword"},
+        { title: "Logo URL", field: "logoUrl"},
+        { title: "Privacy Policy Url", field: "privacyPolicyUrl"},
+        { title: "Support Email", field: "supportEmail" },
     ];
 
   return (
