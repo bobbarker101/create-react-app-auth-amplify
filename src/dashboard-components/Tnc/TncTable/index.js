@@ -31,13 +31,13 @@ export default function TncTable(props){
 
 
     const comonscol = [
-        { title: "SenderId", field: "PK_senderId"},
-        { title: "Company Name", field: "companyName"},
-        { title: "Description", field: "description"  },
-        { title: "Keyword", field: "keyword"},
-        { title: "Logo URL", field: "logoUrl"},
-        { title: "Privacy Policy Url", field: "privacyPolicyUrl"},
-        { title: "Support Email", field: "supportEmail" },
+        { title: "SenderId", field: "PK_senderId", validate: rowData => Boolean(rowData.PK_senderId)},
+        { title: "Company Name", field: "companyName", validate: rowData => Boolean(rowData.companyName)},
+        { title: "Description", field: "description", validate: rowData => Boolean(rowData.description)  },
+        { title: "Keyword", field: "keyword", validate: rowData => Boolean(rowData.keyword)},
+        { title: "Logo URL", field: "logoUrl", validate: rowData => Boolean(rowData.logoUrl)},
+        { title: "Privacy Policy Url", field: "privacyPolicyUrl", validate: rowData => Boolean(rowData.privacyPolicyUrl)},
+        { title: "Support Email", field: "supportEmail", validate: rowData => Boolean(rowData.supportEmail) },
     ];
 
   return (

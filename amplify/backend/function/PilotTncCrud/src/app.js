@@ -74,7 +74,7 @@ app.get('/pilot/tnc', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/pilot/tnc', function(req, res) {
+app.post('/pilot/tnc', function(req, res) {
   // Add your code here
     console.log(req.body);
 
@@ -83,7 +83,7 @@ app.put('/pilot/tnc', function(req, res) {
         Item: req.body,
     };
 
-    dynamodb.putItem(params, function(err) {
+    dynamodb.put(params, function(err) {
         if (err) {
             console.error("Unable to add movie", err);
             res.json({error: err});

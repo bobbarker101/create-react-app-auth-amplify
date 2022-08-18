@@ -78,7 +78,7 @@ function Table(props) {
                 },
                 body: newData
             };
-            API.put(apiName, path, myInit)
+            API.post(apiName, path, myInit)
                 .then((result) => {
                     console.log("result");
                     console.log(result);
@@ -208,18 +208,18 @@ function Table(props) {
                 title="Edit Tnc"
                 options={{
                     tableLayout: "fixed",
-                    pageSize:10,
-                    pageSizeOptions:[10,20,30],
+                    pageSize:5,
+                    pageSizeOptions:[5, 10,20,30],
                     rowStyle: {
                         overflowWrap: 'break-word'
                     }
                 }}
                 editable={{
-                    //isEditable: rowData => true,
-                    //isDeletable: rowData => true,
+                    isEditable: rowData => true,
+                    isDeletable: rowData => true,
                     onRowAdd: onRowAdd,
-                    //onRowUpdate: onRowUpdate,
-                    //onRowDelete: onRowDelete
+                    onRowUpdate: onRowUpdate,
+                    onRowDelete: onRowDelete
                 }}
             />
         </div>
