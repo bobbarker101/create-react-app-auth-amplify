@@ -157,19 +157,15 @@ function Table(props) {
             console.log(oldData);
 
             let apiName = 'PilotApi';
-            let path = '/pilot/tnc/'+newData.keyword+'/'+newData.number;
+            let path = '/pilot/tnc';
             let myInit = {
                 headers: {
                     'Content-Type': 'application/json',
                     'x-api-key': apiKey
                 },
-                body: {
-                    PK_keywordId: newData.keyword,
-                    SK_senderId: newData.number,
-                    responseMessage: newData.responseMessage
-                }
+                body: newData
             };
-            API.patch(apiName, path, myInit)
+            API.put(apiName, path, myInit)
                 .then((result) => {
 
                     console.log("result");

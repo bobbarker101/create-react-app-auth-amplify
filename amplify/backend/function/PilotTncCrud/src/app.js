@@ -116,9 +116,10 @@ app.put('/pilot/tnc', function(req, res) {
             "PK_senderId": req.body.PK_senderId,
             "SK_epochTime": req.body.SK_epochTime
         },
-        UpdateExpression: "set companyName = :companyName, description = :description, #keyword = :keyword, logoUrl = :logoUrl, privacyPolicyUrl = :privacyPolicyUrl, supportEmail = :supportEmail",
+        UpdateExpression: "set companyName = :companyName, #description = :description, #keyword = :keyword, logoUrl = :logoUrl, privacyPolicyUrl = :privacyPolicyUrl, supportEmail = :supportEmail",
         ExpressionAttributeNames: {
-            "#keyword": "keyword"
+            "#keyword": "keyword",
+            "#description": "description"
         },
         ExpressionAttributeValues: {
             ":companyName": req.body.companyName,
