@@ -89,7 +89,7 @@ function Table(props) {
                         const { data } = gridData;
                         const updatedAt = new Date();
                         data.push(newData);
-                        props.setTnc({data: data, count: data.length});
+                        props.setTnc(data);
                         setGridData({ ...gridData, data, resolve, updatedAt });
                         toast.success(result.body);
                     }
@@ -137,6 +137,7 @@ function Table(props) {
                         const updatedAt = new Date();
                         const index = data.indexOf(oldData);
                         data.splice(index, 1);
+                        props.setTnc(data);
                         setGridData({ ...gridData, data, resolve, updatedAt });
                         toast.success(result.success);
                     }
@@ -168,6 +169,7 @@ function Table(props) {
             API.put(apiName, path, myInit)
                 .then((result) => {
 
+                    toast.success(result.success);
                     console.log("result");
                     console.log(result);
                     if(result.error){
@@ -178,9 +180,9 @@ function Table(props) {
                         const updatedAt = new Date();
                         const index = data.indexOf(oldData);
                         data[index] = newData;
-                        props.setTnc({data: data, count: data.length});
+                        props.setTnc(data);
                         setGridData({ ...gridData, data, resolve, updatedAt });
-                        toast.success(result.success);
+
                     }
 
                 })
