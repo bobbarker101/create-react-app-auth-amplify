@@ -15,6 +15,7 @@ import VerifiedUserTwoToneIcon from '@material-ui/icons/VerifiedUserTwoTone';
 import AttachMoneyTwoTone from '@material-ui/icons/AttachMoneyTwoTone';
 import TrendingUpTwoToneIcon from '@material-ui/icons/TrendingUpTwoTone';
 import SendTwoTone from '@material-ui/icons/SendTwoTone';
+import DescriptionTwoTone from '@material-ui/icons/DescriptionTwoTone';
 
 import BusinessCenterTwoToneIcon from '@material-ui/icons/BusinessCenterTwoTone';
 
@@ -137,7 +138,7 @@ const SidebarMenu = (props) => {
                       className="nav-link-simple"
                       to="/Tnc">
                 <span className="sidebar-icon">
-                  <AttachMoneyTwoTone />
+                  <DescriptionTwoTone />
                 </span>
                       Terms and Conditions
                       <span className="sidebar-icon-indicator sidebar-icon-indicator-right">
@@ -146,9 +147,6 @@ const SidebarMenu = (props) => {
                   </NavLink>
               </li>
           </ul>
-          <div className="sidebar-header">
-            <span>Others</span>
-          </div>
 
         </div>
       </PerfectScrollbar>

@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import Table from './Table'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
+import projectLogo from '../../../assets/images/MobileHelmsvn.png';//react.svg';
+
 import {
   Switch,
   Grid,
@@ -48,10 +50,20 @@ export default function TncTable(props){
                 <div className="divider mb-4" />
                 <Container>
                     <Grid container spacing={8} justify="center" >
-                        {tnc.length>0 &&
-                            <div>
-                                <Table tableData={state.tableData} comonscol={comonscol}/>
-                            </div>
+
+                        {tnc.length>0 ?
+                                <div>
+                                    <Table tableData={state.tableData} comonscol={comonscol}/>
+                                </div>
+                            :
+                                <div style={{boxShadow: 'none'}}className="app-sidebar-logo--icon">
+
+                                    <img
+                                    alt="MobileHelm"
+                                    src={projectLogo}
+                                    />
+                                    <h5 style={{marginLeft: '10px', marginTop: '10px'}}>Loading...</h5>
+                                </div>
                         }
                     </Grid>
                 </Container>
