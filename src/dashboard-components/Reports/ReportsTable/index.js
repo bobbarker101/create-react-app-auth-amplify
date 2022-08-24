@@ -28,7 +28,8 @@ export default function ReportsTable(props){
 
     //let reports = {
         //'fHB5oTG4eD8WOuArN7lVV633AWoOpxYA12AWBvr3': props.reports.data['fHB5oTG4eD8WOuArN7lVV633AWoOpxYA12AWBvr3']}
-    let reports = props.reports.data;
+    let reports = Object.keys(props.reports.data).sort((a, b) => props.reports.data[a][0].companyName.localeCompare(props.reports.data[b][0].companyName, 'es', { sensitivity: 'base' })).reduce((r, k) => Object.assign(r, { [k]: props.reports.data[k] }), {})
+
    //console.log('rep');
     //console.log(reports)
     const [state, changeState] = useState({
