@@ -49,8 +49,8 @@ export default function ReportsTable(props){
     const columns = [
         { title: "Name", field: "rateDisplayName" },
         { title: "Count", field: "count" },
-        { title: "Rate", field: "rate" },
-        { title: "Total", field: "total" },
+        { title: "Rate", field: "rate", render: (expense) => '$'+expense.total.toFixed(2) },
+        { title: "Total", field: "total", render: (expense) => '$'+expense.total.toFixed(2) },
     ];
 
     const comonscol = columns.map((column) => {

@@ -68,7 +68,9 @@ function Table(props) {
         new Promise((resolve, reject) => {
             newData.enabled = true;
             newData.SK_epochTime = new Date().getTime();
-            console.log(newData);
+            newData.logoUrl = newData.logoUrl ? newData.logoUrl : "https://www.txtwire.com/wp-content/uploads/2014/06/txtwire_logo_rgb.png";
+            newData.privacyPolicyUrl = newData.privacyPolicyUrl ? newData.privacyPolicyUrl : "https://www.txtwire.com/privacy-policy/";
+            console.log(newData)
             let apiName = 'PilotApi';
             let path = '/pilot/tnc';
             let myInit = {
@@ -154,8 +156,8 @@ function Table(props) {
 
     const onRowUpdate = (newData, oldData) =>
         new Promise((resolve, reject) => {
-            console.log(newData);
-            console.log(oldData);
+            newData.logoUrl = newData.logoUrl ? newData.logoUrl : "https://www.txtwire.com/wp-content/uploads/2014/06/txtwire_logo_rgb.png";
+            newData.privacyPolicyUrl = newData.privacyPolicyUrl ? newData.privacyPolicyUrl : "https://www.txtwire.com/privacy-policy/";
 
             let apiName = 'PilotApi';
             let path = '/pilot/tnc';
