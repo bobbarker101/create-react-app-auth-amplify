@@ -13,6 +13,8 @@ import OverviewWallets from '../../dashboard-components/Overview/OverviewWallets
 import OverviewPageTitleActions from '../../dashboard-components/Overview/OverviewPageTitleActions';
 import OverviewHeaderChart from '../../dashboard-components/Overview/OverviewHeaderChart';
 import MessagesChart from '../../dashboard-components/Overview/MessagesChart';
+import MessagesPieChart from '../../dashboard-components/Overview/MessagesPieChart';
+import AmountPieChart from '../../dashboard-components/Overview/AmountPieChart';
 import { useSelector } from "react-redux";
 
 export default function Overview() {
@@ -37,22 +39,35 @@ export default function Overview() {
         <MessagesChart reports={reports} senders={senders} keywords={keywords}  />
 
         }
-        {/*
-      <Grid container spacing={6}>
-        <Grid item xl={5} className="d-flex">
-          <OverviewPortfolio />
 
-        </Grid>
-        <Grid item xl={7}>
-          <OverviewPriceWatch />
-          <OverviewWallets />
-        </Grid>
-        <Grid item xl={6}>
-          <OverviewActivity />
-        </Grid>
-        <Grid item xl={6}>
-          <OverviewNews />
-        </Grid>
+      <Grid container spacing={3}>
+          {/*
+          <Grid item xl={5} className="d-flex">
+              <OverviewPortfolio />
+
+          </Grid>
+          <Grid item xl={6}>
+              <OverviewPriceWatch />
+              <OverviewWallets />
+          </Grid>
+          */}
+          <Grid item xl={6} >
+              {(reports.data ) &&
+              <AmountPieChart reports={reports} senders={senders} keywords={keywords}  />
+
+              }
+
+          </Grid>
+          <Grid item xl={6}>
+              {(reports.data ) &&
+              <MessagesPieChart reports={reports} senders={senders} keywords={keywords}  />
+
+              }
+          </Grid>
+      </Grid>
+
+        {/*
+
       </Grid>
 
       <OverviewVerification />

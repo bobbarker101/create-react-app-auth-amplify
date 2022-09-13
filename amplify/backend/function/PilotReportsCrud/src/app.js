@@ -82,6 +82,20 @@ app.get(path, function(req, res) {
         params.ExclusiveStartKey = data.LastEvaluatedKey;
         dynamodb.scan(params, onScan);
       }else{
+          returnData.totalPerMonth = Object.keys(returnData.totalPerMonth).sort().reduce(
+              (obj, key) => {
+                  obj[key] = returnData.totalPerMonth[key];
+                  return obj;
+              },
+              {}
+          );
+          returnData.messagesPerMonth = Object.keys(returnData.messagesPerMonth).sort().reduce(
+              (obj, key) => {
+                  obj[key] = returnData.messagesPerMonth[key];
+                  return obj;
+              },
+              {}
+          );
         //returnData.data = _.keyBy(returnData.data, 'PK_userId');
         console.log(returnData);
         res.json(returnData);

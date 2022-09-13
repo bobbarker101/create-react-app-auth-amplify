@@ -212,7 +212,9 @@ function Table(props) {
                     pageSizeOptions:[5, 10,20,30],
                     rowStyle: {
                         overflowWrap: 'break-word'
-                    }
+                    },
+                    exportButton: true,
+                    exportAllData: true
                 }}
                 editable={{
                     isEditable: rowData => true,

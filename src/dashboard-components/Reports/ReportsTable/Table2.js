@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
+import MaterialTable, { MTableBody } from "material-table";
 import { API } from 'aws-amplify';
 import aws_exports from '../../../aws-exports';
 import { connect } from 'react-redux';
@@ -23,6 +23,8 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import { TableCell, TableFooter, TableRow } from "@material-ui/core";
+
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -208,6 +210,10 @@ function Table(props) {
 
     const { data } = gridData;
 
+    let total = data.reduce(function(sum, current) {
+        return sum + current.total;
+    }, 0);
+
 
     return (
         <div className="App">
@@ -219,11 +225,27 @@ function Table(props) {
                 options={{
                     pageSize:10,
                     pageSizeOptions:[10,20,30],
+                    exportButton: true,
+                    exportAllData: true
                 }}
                 Cell={ cell => {
                     const value = sumColumnFormatter(cell.row, param1, param2);
                     return (
                     <span> {value}</span>
+                    )
+                }}
+                components={{
+                    Body: (props) => (
+                        <>
+                            <MTableBody {...props} />
+                            <TableFooter>
+                                <TableRow>
+                                    <TableCell colSpan={1}><h5>TOTAL</h5></TableCell>
+                                    <TableCell colSpan={2} />
+                                    <TableCell colSpan={1}><h5>${total.toFixed(2)}</h5></TableCell>
+                                </TableRow>
+                            </TableFooter>
+                        </>
                     )
                 }}
                 editable={{

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
+import MaterialTable  from "material-table";
 import { API } from 'aws-amplify';
 import aws_exports from '../../../aws-exports';
 import { connect } from 'react-redux';
