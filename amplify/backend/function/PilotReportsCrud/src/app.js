@@ -44,7 +44,7 @@ app.get(path, function(req, res) {
     TableName: tableName,
       FilterExpression: 'SK_startEpochTime > :num',
       ExpressionAttributeValues: {
-          ':num': 2021010120210131
+          ':num': 2020010120200131
       }
   };
   var returnData = {
