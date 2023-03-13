@@ -240,9 +240,9 @@ function Table(props) {
                             <MTableBody {...props} />
                             <TableFooter>
                                 <TableRow>
-                                    <TableCell colSpan={1}><h5>TOTAL</h5></TableCell>
+                                    <TableCell colSpan={1}><h5><b>TOTAL</b></h5></TableCell>
                                     <TableCell colSpan={2} />
-                                    <TableCell colSpan={1}><h5>${total.toFixed(2)}</h5></TableCell>
+                                    <TableCell colSpan={1}><h5><b>${total.toFixed(2)}</b></h5></TableCell>
                                 </TableRow>
                             </TableFooter>
                         </>

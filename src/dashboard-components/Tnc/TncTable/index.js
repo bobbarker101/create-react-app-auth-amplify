@@ -44,7 +44,9 @@ export default function TncTable(props){
 
   return (
     <>
+
       <Card>
+
         <div className="px-0 py-0 py-lg-5">
             <div className="ml-5 ml-lg-0">
                 <div className="divider mb-4" />
