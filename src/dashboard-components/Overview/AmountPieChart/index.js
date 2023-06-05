@@ -41,7 +41,7 @@ export default function LivePreviewExample(props) {
                 <div className="d-block d-lg-flex text-center text-lg-left align-items-center justify-content-between mb-4">
                     <div className="d-flex align-items-center justify-content-center justify-content-lg-start">
                         <div className="display-4 line-height-1 font-weight-bold mr-3">
-                            Revenue This Month
+                           Total This Month
                         </div>
                     </div>
                 </div>

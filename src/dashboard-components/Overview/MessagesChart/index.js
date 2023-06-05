@@ -73,6 +73,70 @@ export default function LivePreviewExample(props) {
             data: Object.values(props.reports.totalPerMonth)
         }
     ];
+    const chart8Options = {
+        chart: {
+            toolbar: {
+                show: false
+            },
+            sparkline: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        grid: {
+            strokeDashArray: '5',
+            borderColor: 'rgba(125, 138, 156, 0.3)'
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+        fill: {
+            color: '#4191ff',
+            gradient: {
+                shade: 'light',
+                type: 'vertical',
+                shadeIntensity: 0.3,
+                inverseColors: false,
+                opacityFrom: 1,
+                opacityTo: 0,
+                stops: [0, 100]
+            }
+        },
+        yaxis:{
+            labels: {
+                formatter: function (value) {
+
+                    return "$"+value.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");//labels[value.substring(4, 6)-1];
+                }
+            }
+        },
+        xaxis: {
+            type:"string",
+            labels: {
+                formatter: function (value) {
+                    let valr = value-1;
+
+                    return labels[parseInt(valr.toString().substring(4, 6))-1];//labels[value.substring(4, 6)-1];
+                }
+            }
+        },
+        colors: ['#4191ff'],
+        legend: {
+            show: false
+        },
+        labels: Object.keys(props.reports.profitTotal?props.reports.profitTotal:0)
+    };
+    //chart6Options.yaxis.labels.formatter = val => val.toFixed(2)
+    const chart8Data = [
+        {
+            name: 'Revenue',
+            data: Object.values(props.reports.profitTotal?props.reports.profitTotal:0)
+        }
+    ];
     const chart7Options = {
         chart: {
             toolbar: {
@@ -277,6 +341,19 @@ export default function LivePreviewExample(props) {
               </div>
           </div>
           <Chart
+              options={chart8Options}
+              series={chart8Data}
+              type="area"
+              height={211}
+          />
+          <div className="d-block d-lg-flex text-center text-lg-left align-items-center justify-content-between mb-4">
+              <div className="d-flex align-items-center justify-content-center justify-content-lg-start">
+                  <div className="display-4 line-height-1 font-weight-bold mr-3">
+                      Total On Invoices
+                  </div>
+              </div>
+          </div>
+          <Chart
               options={chart6Options}
               series={chart6Data}
               type="area"
@@ -295,6 +372,7 @@ export default function LivePreviewExample(props) {
               type="area"
               height={211}
           />
+
 
       </Card>
     </>

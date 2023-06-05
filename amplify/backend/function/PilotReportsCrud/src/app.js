@@ -68,6 +68,8 @@ app.get(path, function(req, res) {
       data.Items.forEach(function(item) {
         returnData.totalPerMonth[item.SK_startEpochTime] = returnData.totalPerMonth[item.SK_startEpochTime] || 0;
         returnData.totalPerMonth[item.SK_startEpochTime] += item.total ? item.total : 0;
+          returnData.profitTotal[item.SK_startEpochTime] = returnData.profitTotal[item.SK_startEpochTime] || 0;
+          returnData.profitTotal[item.SK_startEpochTime] += item.profitTotal ? item.profitTotal : 0;
           returnData.messagesPerMonth[item.SK_startEpochTime] = returnData.messagesPerMonth[item.SK_startEpochTime] || 0;
           returnData.messagesPerMonth[item.SK_startEpochTime] += item.messageCount ? item.messageCount : 0;
         returnData.data[item.PK_userId] = returnData.data[item.PK_userId] || [];
