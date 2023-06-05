@@ -40,70 +40,78 @@ app.use(function(req, res, next) {
  **********************/
 
 app.get(path, function(req, res) {
-  var params = {
-    TableName: tableName,
-      FilterExpression: 'SK_startEpochTime > :num',
-      ExpressionAttributeValues: {
-          ':num': 2020010120200131
-      }
-  };
-  var returnData = {
-    data:  {},
-    count: 0,
-    reportsTotal: 0,
-    totalPerMonth:{},
-    messagesPerMonth: {}
-  };
-  console.log("Scanning senders table. ");
-  console.log(params);
-  dynamodb.scan(params, onScan);
+    var params = {
+        TableName: tableName,
+        FilterExpression: 'SK_startEpochTime > :num',
+        ExpressionAttributeValues: {
+            ':num': 2020010120200131
+        }
+    };
+    var returnData = {
+        data:  {},
+        count: 0,
+        reportsTotal: 0,
+        profitTotal: {},
+        totalPerMonth:{},
+        messagesPerMonth: {}
+    };
+    console.log("Scanning senders table. ");
+    console.log(params);
+    dynamodb.scan(params, onScan);
 
-  function onScan(err, data) {
-    if (err) {
-      console.error("Unable to scan the table. Error JSON: ", JSON.stringify(err, null, 2));
-    } else {
-      // print all the movies
-      console.log("Scan succeeded. ");
+    function onScan(err, data) {
+        if (err) {
+            console.error("Unable to scan the table. Error JSON:/ ", JSON.stringify(err, null, 2));
+        } else {
+            // print all the movies
+            console.log("Scan succeeded. ");
 
-      data.Items.forEach(function(item) {
-        returnData.totalPerMonth[item.SK_startEpochTime] = returnData.totalPerMonth[item.SK_startEpochTime] || 0;
-        returnData.totalPerMonth[item.SK_startEpochTime] += item.total ? item.total : 0;
-          returnData.profitTotal[item.SK_startEpochTime] = returnData.profitTotal[item.SK_startEpochTime] || 0;
-          returnData.profitTotal[item.SK_startEpochTime] += item.profitTotal ? item.profitTotal : 0;
-          returnData.messagesPerMonth[item.SK_startEpochTime] = returnData.messagesPerMonth[item.SK_startEpochTime] || 0;
-          returnData.messagesPerMonth[item.SK_startEpochTime] += item.messageCount ? item.messageCount : 0;
-        returnData.data[item.PK_userId] = returnData.data[item.PK_userId] || [];
-        returnData.data[item.PK_userId].push(item);
-        returnData.count++;
-        returnData.reportsTotal += item.total;
-      });
-      // continue scanning if we have more movies, because
-      // scan can retrieve a maximum of 1MB of data
-      if (typeof data.LastEvaluatedKey !== "undefined") {
-        //  console.log("Scanning for more...");
-        params.ExclusiveStartKey = data.LastEvaluatedKey;
-        dynamodb.scan(params, onScan);
-      }else{
-          returnData.totalPerMonth = Object.keys(returnData.totalPerMonth).sort().reduce(
-              (obj, key) => {
-                  obj[key] = returnData.totalPerMonth[key];
-                  return obj;
-              },
-              {}
-          );
-          returnData.messagesPerMonth = Object.keys(returnData.messagesPerMonth).sort().reduce(
-              (obj, key) => {
-                  obj[key] = returnData.messagesPerMonth[key];
-                  return obj;
-              },
-              {}
-          );
-        //returnData.data = _.keyBy(returnData.data, 'PK_userId');
-        console.log(returnData);
-        res.json(returnData);
-      }
+            data.Items.forEach(function(item) {
+                returnData.totalPerMonth[item.SK_startEpochTime] = returnData.totalPerMonth[item.SK_startEpochTime] || 0;
+                returnData.totalPerMonth[item.SK_startEpochTime] += item.total ? item.total : 0;
+                returnData.profitTotal[item.SK_startEpochTime] = returnData.profitTotal[item.SK_startEpochTime] || 0;
+                returnData.profitTotal[item.SK_startEpochTime] += item.profitTotal ? item.profitTotal : 0;
+                returnData.messagesPerMonth[item.SK_startEpochTime] = returnData.messagesPerMonth[item.SK_startEpochTime] || 0;
+                returnData.messagesPerMonth[item.SK_startEpochTime] += item.messageCount ? item.messageCount : 0;
+                returnData.data[item.PK_userId] = returnData.data[item.PK_userId] || [];
+                returnData.data[item.PK_userId].push(item);
+                returnData.count++;
+                returnData.reportsTotal += item.total;
+            });
+            // continue scanning if we have more movies, because
+            // scan can retrieve a maximum of 1MB of data
+            if (typeof data.LastEvaluatedKey !== "undefined") {
+                //  console.log("Scanning for more...");
+                params.ExclusiveStartKey = data.LastEvaluatedKey;
+                dynamodb.scan(params, onScan);
+            }else{
+                returnData.totalPerMonth = Object.keys(returnData.totalPerMonth).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = returnData.totalPerMonth[key];
+                        return obj;
+                    },
+                    {}
+                );
+                returnData.messagesPerMonth = Object.keys(returnData.messagesPerMonth).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = returnData.messagesPerMonth[key];
+                        return obj;
+                    },
+                    {}
+                );
+                returnData.profitTotal = Object.keys(returnData.profitTotal).sort().reduce(
+                    (obj, key) => {
+                        obj[key] = returnData.profitTotal[key];
+                        return obj;
+                    },
+                    {}
+                );
+                //returnData.data = _.keyBy(returnData.data, 'PK_userId');
+                console.log(returnData);
+                res.json(returnData);
+            }
+        }
     }
-  }
 });
 
 /****************************
