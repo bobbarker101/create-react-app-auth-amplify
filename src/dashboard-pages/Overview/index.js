@@ -16,6 +16,8 @@ import MessagesChart from '../../dashboard-components/Overview/MessagesChart';
 import MessagesPieChart from '../../dashboard-components/Overview/MessagesPieChart';
 import AmountPieChart from '../../dashboard-components/Overview/AmountPieChart';
 
+import ReportsTable from '../../dashboard-components/Overview/ReportsTable';
+
 import RevPieChart from '../../dashboard-components/Overview/RevPieChart';
 import { useSelector } from "react-redux";
 
@@ -69,6 +71,12 @@ export default function Overview() {
           <Grid item xl={6}>
               {(reports.data ) &&
               <RevPieChart reports={reports} senders={senders} keywords={keywords}  />
+
+              }
+          </Grid>
+          <Grid item xl={12}>
+              {(reports.data ) &&
+              <ReportsTable reports={reports} senders={senders} keywords={keywords}  />
 
               }
           </Grid>
