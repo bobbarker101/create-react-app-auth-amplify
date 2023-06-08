@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import clsx from 'clsx';
+import { data } from "./data";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -86,6 +87,26 @@ export default function LivePreviewExample(props) {
 
   const openSearch = () => setSearchOpen(true);
   const closeSearch = () => setSearchOpen(false);
+
+    const result_id = Object.keys(props.reports.data).map((key) => {
+        if (expandedRows === key) {
+
+            return (
+                <tr>
+                    <td colSpan="4" className="collaps-viewer">
+                        {props.reports.data[key].length > 0 ? (
+                            <li>
+                                {`The Phone Number of `}
+                                <br/>{" "}
+                            </li>
+                        ) : (
+                            <div className="no-data"> No activity found! </div>
+                        )}
+                    </td>
+                </tr>
+            )
+        }else{null}
+    });
 
   return (
     <>
@@ -331,72 +352,90 @@ export default function LivePreviewExample(props) {
           </div>
         </div>
         <div className="divider" />
-        <Table className="table table-striped table-borderless text-nowrap mb-0">
-            {/*}
-            <thead className="bg-white font-size-sm text-uppercase">
-            <tr>
-              <th className="bg-white text-left px-4">Company</th>
-              <th className="bg-white text-center">Messages</th>
-              <th className="bg-white text-center">Cost</th>
-              <th className="bg-white text-center">Invoice Total</th>
-                <th className="bg-white text-center">Profit</th>
-                <th className="bg-white text-center">Percent Profit</th>
-              <th className="bg-white text-right px-4">Status</th>
-            </tr>
-          </thead>
-          */}
-            <thead>
-            <tr>
-                <th>S.no</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Gender</th>
-            </tr>
-            </thead>
-          <tbody>
-          {Object.keys(props.reports.data).map((key) => {
-              return (
-
-              <tr key={key} onClick={() => handleExpandRow(key)}>
-                <td >
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <div className="font-weight-bold">{props.reports.data[key][0].companyName}</div>
-                      <div className="opacity-7">{props.reports.data[key][props.reports.data[key].length-reportNum].startEnd}</div>
-                    </div>
-                  </div>
-                </td>
-                  <td className="text-center">
-                      <span>{props.reports.data[key][props.reports.data[key].length-reportNum].messageCount}</span>
-                  </td>
-                  <td className="text-center">
-                      <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].costTotal || 0).toFixed(2)}</span>
-                  </td>
-                  <td className="text-center">
-                      <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].total || 0).toFixed(2)}</span>
-                  </td>
-                  <td className="text-center">
-                      <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].profitTotal || 0).toFixed(2)}</span>
-                  </td>
-                  <td className="text-center">
-                      <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].profitPercent || 0).toFixed(2)}</span>
-                  </td>
-                  <td className="text-center">
-                      <span>Processing</span>
-                  </td>
-
+          <table className="table table-striped table-borderless text-nowrap mb-0">
+              <thead className="bg-white font-size-sm text-uppercase">
+              <tr>
+                  <th className="bg-white text-left px-4">Company</th>
+                  <th className="bg-white text-center">Messages</th>
+                  <th className="bg-white text-center">Cost</th>
+                  <th className="bg-white text-center">Invoice Total</th>
+                  <th className="bg-white text-center">Profit</th>
+                  <th className="bg-white text-center">Percent Profit</th>
+                  <th className="bg-white text-right px-4">Status</th>
               </tr>
+              </thead>
+              {Object.keys(props.reports.data).map((key, index) => (
+                  <tbody>
+                  <tr key={index} onClick={() => handleExpandRow(index)}>
+                      <td >
+                          <div className="d-flex align-items-center">
+                              <div>
+                                  <div className="font-weight-bold">{props.reports.data[key][0].companyName}</div>
+                                  <div className="opacity-7">{props.reports.data[key][props.reports.data[key].length-reportNum].startEnd}</div>
+                              </div>
+                          </div>
+                      </td>
+                      <td className="text-center">
+                          <span>{props.reports.data[key][props.reports.data[key].length-reportNum].messageCount}</span>
+                      </td>
+                      <td className="text-center">
+                          <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].costTotal || 0).toFixed(2)}</span>
+                      </td>
+                      <td className="text-center">
+                          <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].total || 0).toFixed(2)}</span>
+                      </td>
+                      <td className="text-center">
+                          <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].profitTotal || 0).toFixed(2)}</span>
+                      </td>
+                      <td className="text-center">
+                          <span>{(props.reports.data[key][props.reports.data[key].length-reportNum].profitPercent || 0).toFixed(2)}</span>
+                      </td>
+                      <td className="text-center">
+                          <span>Processing</span>
+                      </td>
+                  </tr>
+                  {expandedRows === index ? (
+                      <tr>
+                          <td colSpan="4" className="collaps-viewer">
+                              {props.reports.data[key][props.reports.data[key].length-reportNum].lineItems ? (
+                                  <table>
+                                      <thead>
+                                      <tr>
+                                          <th>Item</th>
+                                          <th>Count</th>
+                                          <th>Revenue</th>
+                                          <th>Rate</th>
+                                          <th>Cost</th>
+                                          <th>Total</th>
+                                          <th>Cost Total</th>
+                                      </tr>
+                                      </thead>
+                                      {props.reports.data[key][props.reports.data[key].length-reportNum].lineItems.map((item, index2) => (
+                                          <tbody>
+                                          <tr key={index} onClick={() => handleExpandRow(index)}>
 
+                                              <td>{item.rateDisplayName}</td>
+                                              <td>{item.count}</td>
+                                              <td>${(item.total-item.costTotal).toFixed(3)}</td>
+                                              <td>${item.rate}</td>
+                                              <td>${item.cost}</td>
+                                              <td>${item.total.toFixed(4)}</td>
+                                              <td>${item.costTotal.toFixed(3)}</td>
+                                          </tr>
 
+                                          </tbody>
+                                      ))}
+                                  </table>
+                              ) : (
+                                  <div className="no-data"> No activity found! </div>
 
-
-
-          )
-          })}
-          </tbody>
-        </Table>
-        <div className="divider" />
-
+                              )}
+                          </td>
+                      </tr>
+                  ) : null}
+                  </tbody>
+              ))}
+          </table>
         <div className="card-footer p-4 d-flex justify-content-center">{/*
           <Pagination className="pagination-primary" count={10} />
         */}</div>

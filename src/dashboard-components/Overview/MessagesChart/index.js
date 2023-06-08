@@ -218,9 +218,9 @@ export default function LivePreviewExample(props) {
   };
 
 
-    let val1 = parseFloat(props.reports.totalPerMonth[Object.keys(props.reports.totalPerMonth)[Object.keys(props.reports.totalPerMonth).length-1]]).toFixed(2);
-    let val2 = parseFloat(props.reports.totalPerMonth[Object.keys(props.reports.totalPerMonth)[Object.keys(props.reports.totalPerMonth).length-2]]).toFixed(2);
-    let val3 = parseFloat(props.reports.totalPerMonth[Object.keys(props.reports.totalPerMonth)[Object.keys(props.reports.totalPerMonth).length-3]]).toFixed(2);
+    let val1 = parseFloat(props.reports.profitTotal[Object.keys(props.reports.profitTotal)[Object.keys(props.reports.profitTotal).length-1]]).toFixed(2);
+    let val2 = parseFloat(props.reports.profitTotal[Object.keys(props.reports.profitTotal)[Object.keys(props.reports.profitTotal).length-2]]).toFixed(2);
+    let val3 = parseFloat(props.reports.profitTotal[Object.keys(props.reports.profitTotal)[Object.keys(props.reports.profitTotal).length-3]]).toFixed(2);
     let messagesVal1 = props.reports.messagesPerMonth[Object.keys(props.reports.messagesPerMonth)[Object.keys(props.reports.messagesPerMonth).length-1]];
     let messagesVal2 = props.reports.messagesPerMonth[Object.keys(props.reports.messagesPerMonth)[Object.keys(props.reports.messagesPerMonth).length-2]];
     let messagesVal3 = props.reports.messagesPerMonth[Object.keys(props.reports.messagesPerMonth)[Object.keys(props.reports.messagesPerMonth).length-3]];
@@ -336,7 +336,7 @@ export default function LivePreviewExample(props) {
           <div className="d-block d-lg-flex text-center text-lg-left align-items-center justify-content-between mb-4">
               <div className="d-flex align-items-center justify-content-center justify-content-lg-start">
                   <div className="display-4 line-height-1 font-weight-bold mr-3">
-                      Revenue
+                      Gross Profit
                   </div>
               </div>
           </div>
@@ -349,7 +349,7 @@ export default function LivePreviewExample(props) {
           <div className="d-block d-lg-flex text-center text-lg-left align-items-center justify-content-between mb-4">
               <div className="d-flex align-items-center justify-content-center justify-content-lg-start">
                   <div className="display-4 line-height-1 font-weight-bold mr-3">
-                      Total On Invoices
+                      Revenue
                   </div>
               </div>
           </div>
