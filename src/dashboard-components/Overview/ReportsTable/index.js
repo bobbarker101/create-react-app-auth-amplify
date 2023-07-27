@@ -403,11 +403,13 @@ export default function LivePreviewExample(props) {
                                       <tr>
                                           <th>Item</th>
                                           <th>Count</th>
+                                          <th>Cus Rate</th>
+                                          <th>TW Rate</th>
                                           <th>Revenue</th>
-                                          <th>Rate</th>
                                           <th>Cost</th>
-                                          <th>Total</th>
-                                          <th>Cost Total</th>
+                                          <th>Gross</th>
+
+                                          <th>AGR %</th>
                                       </tr>
                                       </thead>
                                       {props.reports.data[key][props.reports.data[key].length-reportNum].lineItems.map((item, index2) => (
@@ -416,11 +418,13 @@ export default function LivePreviewExample(props) {
 
                                               <td>{item.rateDisplayName}</td>
                                               <td>{item.count}</td>
-                                              <td>${(item.total-item.costTotal).toFixed(3)}</td>
-                                              <td>${item.rate}</td>
-                                              <td>${item.cost}</td>
-                                              <td>${item.total.toFixed(4)}</td>
-                                              <td>${item.costTotal.toFixed(3)}</td>
+                                              <td>{item.rate}</td>
+                                              <td>{item.cost}</td>
+                                              <td>${item.total.toFixed(5)}</td>
+                                              <td>${(item.costTotal).toFixed(5)}</td>
+                                              <td>${(item.total-item.costTotal).toFixed(5)}</td>
+                                              <td>{item.total?(((item.total-item.costTotal)/item.total)*100).toFixed(3):0}%</td>
+
                                           </tr>
 
                                           </tbody>
