@@ -34,6 +34,7 @@ import RadioButtonUncheckedTwoToneIcon from '@material-ui/icons/RadioButtonUnche
 
 import SearchTwoToneIcon from '@material-ui/icons/SearchTwoTone';
 import SettingsTwoToneIcon from '@material-ui/icons/SettingsTwoTone';
+import _ from 'lodash';
 
 export default function LivePreviewExample(props) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -413,6 +414,7 @@ export default function LivePreviewExample(props) {
                                       </tr>
                                       </thead>
                                       {props.reports.data[key][props.reports.data[key].length-reportNum].lineItems.map((item, index2) => (
+
                                           <tbody>
                                           <tr key={index} onClick={() => handleExpandRow(index)}>
 
@@ -423,12 +425,30 @@ export default function LivePreviewExample(props) {
                                               <td>${item.total.toFixed(5)}</td>
                                               <td>${(item.costTotal).toFixed(5)}</td>
                                               <td>${(item.total-item.costTotal).toFixed(5)}</td>
-                                              <td>{item.total?(((item.total-item.costTotal)/item.total)*100).toFixed(3):0}%</td>
+                                              <td>{item.total?(((item.total-item.costTotal)/item.total)*100).toFixed(2):0}%</td>
 
                                           </tr>
 
                                           </tbody>
                                       ))}
+                                      <tbody>
+                                        <tr >
+
+                                            <td><b>Total</b></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><b>${_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'total').toFixed(2)}</b></td>
+                                            <td><b>${_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'costTotal').toFixed(2)}</b></td>
+                                            <td><b>${(_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'total')
+                                                -_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'costTotal')).toFixed(2)}</b></td>
+                                            <td><b>{(((_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'total')
+                                            -_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'costTotal'))
+                                                /(_.sumBy(props.reports.data[key][props.reports.data[key].length-reportNum].lineItems, 'total')))*100).toFixed(2)}%</b></td>
+
+                                        </tr>
+
+                                      </tbody>
                                   </table>
                               ) : (
                                   <div className="no-data"> No activity found! </div>
