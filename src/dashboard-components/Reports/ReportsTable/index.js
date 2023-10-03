@@ -134,7 +134,7 @@ export default function ReportsTable(props){
         <div className="px-0 py-0 py-lg-5">
             <div className="ml-5 ml-lg-0">
                 <div className="divider mb-4" />
-                <Container>
+                <Container maxWidth={false} >
                     <h4>Select a company</h4>
                     <Box sx={{ minWidth: 120 }}>
                         <FormControl >
@@ -151,6 +151,7 @@ export default function ReportsTable(props){
                             </Select>
                         </FormControl>
                     </Box>
+
                     <Box sx={{ minWidth: 120 }}>
                         <FormControl >
                             <InputLabel id="demo-simple-select-label">Date</InputLabel>
